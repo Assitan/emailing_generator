@@ -1,0 +1,129 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="bower_components/angular-bootstrap-colorpicker/css/colorpicker.css">
+  </head>
+  <body role="main" ng-app="emailingGeneratorApp" ng-controller="MainCtrl">
+
+    <nav id="menu" class="navbar col-sm-1">
+        <ul class="nav nav-pills nav-stacked">
+            <li ng-repeat="country in countries" mdm-addactiveclass>
+            	<a ui-sref="{{country}}">{{ country | uppercase }}</a>
+            </li>
+        </ul>      
+    </nav>
+    
+    <div id="settings" class="col-sm-2">
+        <ul id="menu_colorpick" class="nav">
+
+            <li>
+                <h4 id="general_title">Général</h4>
+                <ul id="general_menu" class="nav">
+                   <!-- <li ng-repeat="generalColor in settingsGeneralColor">
+                        <button colorpicker ng-model="setColor.color" id="{{generalColor.id}}" type="button" class="btn btn-primary btn-xs" ng-click="setGeneralColor()">{{generalColor.label}}</button> <input id="colorpicker_input" ng-model="setColor.color" type="text">
+                        {{get_color}}
+                   </li>  -->  
+                    <li>
+                        <button colorpicker colorpicker-fixed-position="true" ng-model="setColor.color_bg" type="button" class="btn btn-primary btn-xs">background</button> 
+                        <div class="right_input">
+                            <input class="colorpicker_input" ng-model="setColor.color_bg" type="text">
+                            <button ng-model="setColor.color_bg" type="submit" class="btn btn-primary btn-xs" ng-click="setGeneralColor()">OK</button> 
+                        </div>
+                   </li> 
+                   <li>
+                        <button colorpicker colorpicker-fixed-position="true" ng-model="setColor.color_text" type="button" class="btn btn-primary btn-xs">texte header & footer</button> 
+                        <div class="right_input">
+                            <input class="colorpicker_input" ng-model="setColor.color_text" type="text">
+                            <button ng-model="setColor.color_text" type="submit" class="btn btn-primary btn-xs" ng-click="setGeneralColor()">OK</button> 
+                        </div>
+                   </li>  
+                   <li>
+                        <button colorpicker colorpicker-fixed-position="true" ng-model="setColor.color_border" type="button" ng-click="setGeneralColor()" class="btn btn-primary btn-xs">Bordure</button> 
+                        <div class="right_input">
+                            <input class="colorpicker_input" ng-model="setColor.color_border" type="text">
+                            <button ng-model="setColor.color_border" type="submit" class="btn btn-primary btn-xs" ng-click="setGeneralColor()">OK</button> 
+                        </div>
+                   </li>                 
+                </ul>
+            </li>
+
+            <li>
+                <h4 id="sections_title">Sections</h4>
+                <ul id="sections_menu" class="nav">
+                    <li ng-repeat="sectionColor in settingsSectionColor">
+                        <button id="{{sectionColor.id}}" type="button" class="btn btn-primary btn-xs">{{sectionColor.label}}</button>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <h4 id="general_title" data-toggle="modal" data-target="#replace_links_modal">Remplacer</h4>
+                <p id="result_tracking"><strong>début:</strong> {{get_tracking.begin}} <br><br><strong>fin:</strong> {{get_tracking.end}}</p>
+            </li>
+
+            <li><h4>Générer</h4></li>
+        </ul>
+    </div>
+
+    <div class="modal fade" id="replace_links_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Remplacer les liens de trackings</h4>
+                </div>
+                <div class="modal-body">
+                <form role="form" id="form_replace-links">
+                    <div class="input-group">
+                        <input type="text" class="form-control" ng-model="tracking.begin" placeholder="Début tracking">
+                        <input type="text" class="form-control" ng-model="tracking.end" placeholder="Fin du tracking">
+                    </div>             
+                </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" ng-click="addTrackings()">Remplacer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container newsletter" ui-view></div>
+
+    <footer class="footer">
+      <p><span class="glyphicon glyphicon-heart"></span> from the frond-end dev team</p>
+    </footer>
+
+    <!--[if lt IE 9]>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/json3/lib/json3.min.js"></script>
+    <![endif]-->
+
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/generator/generator.js"></script>
+    <script src="scripts/generator/emailing.js"></script>
+    <!-- endbuild -->
+
+</body>
+</html>
