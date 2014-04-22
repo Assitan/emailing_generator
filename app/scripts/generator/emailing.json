@@ -1,0 +1,59 @@
+{
+  "generalColors" : {
+    "text" : {
+      "colour" : "#cf8484"
+    },
+    "border" : {
+      "colour" : "#c76f6f"
+    },
+    "background" : {
+      "colour" : "#e3d1d1"
+    }
+  },
+  "trackings" : {
+    "FR_fr" : {
+      "begin" : "",
+      "end" : ""
+    },
+    "ES_es" : {
+      "begin" : "",
+      "end" : ""
+    },
+    "UK_en" : {
+      "begin" : "",
+      "end" : ""
+    },
+    "IT_it" : {
+      "begin" : "",
+      "end" : ""
+    },
+    "NL_nl" : {
+      "begin" : "",
+      "end" : ""
+    },
+    "BE_fr" : {
+      "begin" : "",
+      "end" : ""
+    },
+    "BE_nl" : {
+      "begin" : "",
+      "end" : ""
+    },
+    "CH_fr" : {
+      "begin" : "",
+      "end" : ""
+    },
+    "CH_it" : {
+      "begin" : "",
+      "end" : ""
+    },
+    "LU_fr" : {
+      "begin" : "",
+      "end" : ""
+    },
+    "AT_de" : {
+      "begin" : "",
+      "end" : ""
+    }   
+  }
+}

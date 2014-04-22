@@ -1,109 +1,127 @@
 'use strict';
 
 angular.module('emailingGeneratorApp')
-
    .config(function ($stateProvider, $urlRouterProvider) {
 
-    $urlRouterProvider.otherwise('/generateur/fr');
+    $urlRouterProvider.otherwise('/generateur');
 
-    $stateProvider
-    .state('fr', {
-        url: '/generateur/fr',
-        templateUrl: 'views/templates/fr.html'
-      })
-    .state('de', {
-        url: '/generateur/de',
-        templateUrl: 'views/templates/de.html'
-      })
-    .state('es', {
-        url: '/generateur/es',
-        templateUrl: 'views/templates/es.html'
-      })
-    .state('it', {
-        url: '/generateur/it',
-        templateUrl: 'views/templates/it.html'
-      })
-    .state('uk', {
-        url: '/generateur/uk',
-        templateUrl: 'views/templates/uk.html'
-      });
+    var mainCountries = ['BE-fr','DE-de','ES-es','FR-fr','IT-it'];
+    var allCountries = ['AT-de','BE-fr','BE-nl','CH-de','CH-fr','CH-it','DE-de','ES-es','FR-fr','IT-it','LU-fr','NL-nl','UK-en'];
 
-  })
-  .controller('MainCtrl', function ($scope, $rootScope, $http, $firebase) {  
-
-    // NAVIGATION
-    $scope.countries = ['fr','de','es','it','uk'];
-
-    // SETTINGS
-    $scope.settingsGeneralColor = [
-      {
-  	    id: 'change_bg',
-  		label: 'background',
-  	  },
-  	  {
-  		id: 'change_text_info',
-  		label: 'texte header & footer',
-  	  },
-      {
-  		id: 'change_border_bottom',
-  		label: 'Bordure',
-  	  }
-    ];
-    // $scope.setGeneralColor = function() {
-    //   $scope.setColorBg = {
-    //     colour: ''
-    //   };
-    //   $scope.setColorText = {
-    //     colour: ''
-    //   };
-    //   $scope.setColorBorder = {
-    //     colour: ''
-    //   };
-    // };
-
-    $scope.settingsSectionColor = [
-      {
-        id: 'change_bg',
-        label: 'background'
-      },
-      {
-        id: 'change_text_info',
-        label: 'texte'
-      }
-    ];
-
-    $scope.getGeneralColor = function() {
-      $scope.getColor = {
-        color: ''
-      };
+    for (var i = 0; i < mainCountries.length; i++) {
+        state_kit(mainCountries[i]);
+        state_kit700(mainCountries[i]);
     };
+
+    for (var i = 0; i < allCountries.length; i++) {
+        state_news(allCountries[i]);
+        state_news700(allCountries[i]);
+    };
+
+
+    function state_kit(country){
+        $stateProvider.state('kit_' + country, {
+            url: '/kit/' + country,
+            templateUrl: 'views/templates/newsletters/kit/kit-' + country + '.html'
+        });
+    };
+    function state_kit700(country){
+        $stateProvider.state('kit700_' + country, {
+            url: '/kit700/' + country,
+            templateUrl: 'views/templates/newsletters/kit700/kit700-' + country + '.html'
+        });
+    };
+    function state_news(country){
+        $stateProvider.state('news_' + country, {
+            url: '/news/' + country,
+            templateUrl: 'views/templates/newsletters/news/news-' + country + '.html'
+        });
+    };
+    function state_news700(country){
+        $stateProvider.state('news700_'+ country, {
+            url: '/news700/' + country,
+            templateUrl: 'views/templates/newsletters/news/news700-' + country + '.html'
+        });
+    };
+  })  
+  .controller('MainCtrl', function ($scope, $rootScope, $http, $firebase) {  
+     // NAVIGATION
+    var mainCountries = ['BE-fr','DE-de','ES-es','FR-fr','IT-it'];
+    var allCountries = ['AT-de','BE-fr','BE-nl','CH-de','CH-fr','CH-it','DE-de','ES-es','FR-fr','IT-it','LU-fr','NL-nl','UK-en'];
+
+
+    $scope.countries = [
+        {
+            title: 'kit',
+            name: mainCountries
+        },
+        {
+            title: 'kit700',
+            name: mainCountries
+        },
+        {
+            title: 'news',
+            name: allCountries
+        },
+        {
+            title: 'news700',
+            name: allCountries
+        }
+    ];
+
+   
+    $scope.year = new Date();
 
     //AJOUT DES TRACKINGS DS LA BDD 
     //TODO : mettre dans un factory
-    var trackings_fb = new Firebase("https://emailing-generator.firebaseio.com/trackings"),
-        colors_fb = new Firebase("https://emailing-generator.firebaseio.com/colors");
+    var fb_url = 'https://emailing-generator.firebaseio.com',
+        trackings = new Firebase(fb_url + '/trackings'),
+        trackings_FR_fr = new Firebase(trackings + '/FR_fr'),
+        trackings_ES_es = new Firebase(trackings + '/ES_es'),
+        trackings_DE_de = new Firebase(trackings + '/DE_de'),
+        trackings_UK_en = new Firebase(trackings + '/UK_en'),
+        trackings_IT_it = new Firebase(trackings + '/IT_it'),
+        trackings_NL_nl = new Firebase(trackings + '/NL_nl'),
+        trackings_CH_it = new Firebase(trackings + '/CH_it'),
+        trackings_CH_fr = new Firebase(trackings + '/CH_fr'),
+        trackings_BE_fr = new Firebase(trackings + '/BE_fr'),
+        trackings_BE_nl = new Firebase(trackings + '/BE_nl'),
+        trackings_LU_fr = new Firebase(trackings + '/LU_fr'),
+        trackings_AT_de = new Firebase(trackings + '/AT_de'),
+        colors    = new Firebase(fb_url + '/generalColors');
 
-    $scope.add_tracking = $firebase(trackings_fb);
+    //TRACKINGS
+    /*$scope.addTrackings = function(){
+      trackings_FR.update($scope.tracking.FR);
+      trackings_DE.update($scope.tracking.DE);
+    };*/
 
-    $scope.addTrackings = function(){
-        trackings_fb.update($scope.tracking);
-    };
-
-    trackings_fb.on('value', function(snap) {
-      $scope.getTracking = snap.val();
+    trackings_FR_fr.on('value', function(snap) {
+      $scope.getTracking_FR_fr = snap.val();
     });
 
+    /*trackings_DE_de.on('value', function(snap) {
+      $scope.getTracking_DE_de = snap.val();
+    });*/
 
-    $scope.add_colors = $firebase(colors_fb);
-
+    //COLORS
     $scope.setGeneralColor = function() {
-        console.log($scope.setColor);
-        colors_fb.update($scope.setColor);
+        colors.update($scope.setColor);
     };
 
-    colors_fb.on('value', function(snap) {
+    colors.on('value', function(snap) {
       $scope.getColor = snap.val();
     });
+
+    var xsrf = $.param({fkey: "key"});
+    $http({
+      url:'/ss.json',
+      method : 'POST',
+      data: xsrf,
+      headers : {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}
+    }).success(function(data, status, headers, config) {
+      console.log(data);
+    })
     
   })
   .directive('mdmAddactiveclass', function() {
@@ -115,19 +133,6 @@ angular.module('emailingGeneratorApp')
         });
       };
     })
-  .directive('mdmChangecolor', function() {
-    return function (scope, element, attrs){
-      function changeColor(btn,item,style){
-        $(btn).colpick({
-            layout:'hex',
-             onSubmit:function(hsb,hex,rgb,el) {
-                $(item).css(style, '#' + hex);
-                $(item).colpickHide();
-            }
-        });
-      }
-    };
-  })
    .directive('mdmShowpane', function() {
     return function (scope, element, attrs) {
         element.click(function(){
@@ -145,15 +150,59 @@ angular.module('emailingGeneratorApp')
           });
       };
   })
-   .directive('mdmReplace', function() {
-    return function (scope, element, attrs){
-      template: '<form role="form" id="options_sections" class="col-sm-1">'+
-                  '<button ng-model="link" type="button" class="btn btn-default glyphicon glyphicon-link"></button>'+
-                  '<button ng-model="alt" type="button" class="btn btn-default">alt</button>'+
-                  '<button ng-model="img" type="file" class="btn btn-default">image</button>'+
-                '</form>'
+   //get new code html of newsletter
+   .directive('mdmRender', function() {
+    return{    
+        restrict:'A',
+        transclude:true,
+        templateUrl:'/views/templates/fr.html',   
+        link:function(scope,element,attrs,ctrl, transclude){
+          element.click(function(){
+            element.find('textarea').html(transclude());
+          });
+        }
     };
   })
+   .directive('mdmDraggable', ['$document', function($document) {
+    return function (scope, element, attr) {
+      var startX = 0, startY = 0, x = 0, y = 0;
+ 
+      element.on('mousedown', function(event) {
+        event.preventDefault();
+        element.css({        
+          'opacity': '.7',
+          'border': '2px dashed black',
+          'box-shadow':'0 0 5px #333',
+          'cursor':'move',
+          'z-index':100
+        });
+        startX = event.pageX - x;
+        startY = event.pageY - y;
+
+        $document.on('mousemove', mousemove);
+        $document.on('mouseup', mouseup);
+      });
+ 
+      function mousemove(event) {
+        y = event.pageY - startY;
+        x = event.pageX - startX;
+        element.css({
+          top: y + 'px',
+          left:  x + 'px'
+        });
+      }
+ 
+      function mouseup() {
+        element.css({
+          'opacity': 1,
+          'border': '4px solid rgba(247, 247, 247, 0.57)',
+          'box-shadow':'none'
+        });
+        $document.unbind('mousemove', mousemove);
+        $document.unbind('mouseup', mouseup);
+      }
+    };
+  }])
   .directive('cross', function() {
     return {
       template: '<a href="#" type="button" class="btn btn-danger btn-sm glyphicon glyphicon-remove croix"></a>'
