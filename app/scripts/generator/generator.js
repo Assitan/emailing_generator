@@ -5,15 +5,16 @@ angular.module('emailingGeneratorApp')
 
     $urlRouterProvider.otherwise('/generateur');
 
-    var mainCountries = ['BE-fr','DE-de','ES-es','FR-fr','IT-it'];
-    var allCountries = ['AT-de','BE-fr','BE-nl','CH-de','CH-fr','CH-it','DE-de','ES-es','FR-fr','IT-it','LU-fr','NL-nl','UK-en'];
+    var mainCountries = ['BE-fr','DE-de','ES-es','FR-fr','IT-it'],
+        allCountries = ['AT-de','BE-fr','BE-nl','CH-de','CH-fr','CH-it','DE-de','ES-es','FR-fr','IT-it','LU-fr','NL-nl','UK-en'],
+        i = 0;
 
-    for (var i = 0; i < mainCountries.length; i++) {
+    for (; i < mainCountries.length; i++) {
         state_kit(mainCountries[i]);
         state_kit700(mainCountries[i]);
     };
 
-    for (var i = 0; i < allCountries.length; i++) {
+    for (; i < allCountries.length; i++) {
         state_news(allCountries[i]);
         state_news700(allCountries[i]);
     };
