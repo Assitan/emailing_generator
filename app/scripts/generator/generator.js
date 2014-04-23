@@ -18,25 +18,27 @@ angular.module('emailingGeneratorApp')
         state_news700(allCountries[i]);
     };
 
-
     function state_kit(country){
         $stateProvider.state('kit_' + country, {
             url: '/kit/' + country,
             templateUrl: 'views/templates/newsletters/kit/kit-' + country + '.html'
         });
     };
+
     function state_kit700(country){
         $stateProvider.state('kit700_' + country, {
             url: '/kit700/' + country,
             templateUrl: 'views/templates/newsletters/kit700/kit700-' + country + '.html'
         });
     };
+
     function state_news(country){
         $stateProvider.state('news_' + country, {
             url: '/news/' + country,
             templateUrl: 'views/templates/newsletters/news/news-' + country + '.html'
         });
     };
+
     function state_news700(country){
         $stateProvider.state('news700_'+ country, {
             url: '/news700/' + country,
@@ -44,37 +46,54 @@ angular.module('emailingGeneratorApp')
         });
     };
   })  
-  .controller('MainCtrl', function ($scope, $rootScope, $http, $firebase) {  
+  .controller('MainCtrl', function ($scope, $rootScope, $http, $firebase) {
      // NAVIGATION
-    var mainCountries = ['BE-fr','DE-de','ES-es','FR-fr','IT-it'];
+    var mainCountries = ['FR-fr','BE-fr','DE-de','ES-es','IT-it'];
     var allCountries = ['AT-de','BE-fr','BE-nl','CH-de','CH-fr','CH-it','DE-de','ES-es','FR-fr','IT-it','LU-fr','NL-nl','UK-en'];
 
-
-    $scope.countries = [
+    $scope.main_countries = [
         {
             title: 'kit',
             name: mainCountries
         },
         {
-            title: 'kit700',
+            title: 'kit 700',
             name: mainCountries
-        },
+        }
+    ];
+
+    $scope.all_countries = [
         {
             title: 'news',
             name: allCountries
         },
         {
-            title: 'news700',
+            title: 'news 700',
             name: allCountries
         }
     ];
 
-   
+    $scope.setColor = [
+        {
+            title: 'background',
+            colour: ''
+        },
+        {
+            title:'texte header & footer',
+            colour: ''
+        },
+        {
+            title:'bordure',
+            colour: ''
+        }
+    ];
+
+   //ANNÉE FOOTER
     $scope.year = new Date();
 
     //AJOUT DES TRACKINGS DS LA BDD 
     //TODO : mettre dans un factory
-    var fb_url = 'https://emailing-generator.firebaseio.com',
+    var fb_url = new Firebase('https://emailing-generator.firebaseio.com'),
         trackings = new Firebase(fb_url + '/trackings'),
         trackings_FR_fr = new Firebase(trackings + '/FR_fr'),
         trackings_ES_es = new Firebase(trackings + '/ES_es'),
@@ -115,7 +134,7 @@ angular.module('emailingGeneratorApp')
 
     var xsrf = $.param({fkey: "key"});
     $http({
-      url:'/ss.json',
+      url:'/scripts/generator/ss.json',
       method : 'POST',
       data: xsrf,
       headers : {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}
@@ -155,14 +174,52 @@ angular.module('emailingGeneratorApp')
     return{    
         restrict:'A',
         transclude:true,
-        templateUrl:'/views/templates/fr.html',   
-        link:function(scope,element,attrs,ctrl, transclude){
-          element.click(function(){
-            element.find('textarea').html(transclude());
-          });
+        templateUrl:'/views/templates/newsletters/kit/kit-BE-fr.html',   
+        link:function(scope,element,attrs,ctrl,transclude){
+            //element.find('textarea').html(transclude());
+            transclude(function(clone){
+                element.find('textarea').append(clone);
+              });
         }
     };
   })
+//    directive('mdmRender', function ($compile) {
+
+//     var frTemplate = '<div class="entry-photo"><h2>&nbsp;</h2><div class="entry-img"><span><a href="{{rootDirectory}}{{content.data}}"><img ng-src="{{rootDirectory}}{{content.data}}" alt="entry photo"></a></span></div><div class="entry-text"><div class="entry-title">{{content.title}}</div><div class="entry-copy">{{content.description}}</div></div></div>';
+//     var deTemplate = '<div class="entry-photo"><h2>&nbsp;</h2><div class="entry-img"><span><a href="{{rootDirectory}}{{content.data}}"><img ng-src="{{rootDirectory}}{{content.data}}" alt="entry photo"></a></span></div><div class="entry-text"><div class="entry-title">{{content.title}}</div><div class="entry-copy">{{content.description}}</div></div></div>';
+//     var esTemplate = '<div class="entry-photo"><h2>&nbsp;</h2><div class="entry-img"><span><a href="{{rootDirectory}}{{content.data}}"><img ng-src="{{rootDirectory}}{{content.data}}" alt="entry photo"></a></span></div><div class="entry-text"><div class="entry-title">{{content.title}}</div><div class="entry-copy">{{content.description}}</div></div></div>';
+
+//     var getTemplate = function(contentType) {
+//         var template = '';
+
+//         switch(contentType) {
+//             case 'fr':
+//                 template = frTemplate;
+//                 break;
+//             case 'de':
+//                 template = deTemplate;
+//                 break;
+//             case 'es':
+//                 template = esTemplate;
+//                 break;
+//         }
+
+//         return template;
+//     }
+
+//     var linker = function(scope, element, attrs) {
+//         scope.rootDirectory = '/views/templates/newsletters/kit/';
+
+//         element.find('textarea').html(transclude());
+//     }
+
+//     return {
+//         restrict: "AE",
+//         rep1ace: true,
+//         link: linker,
+       
+//     };
+// })
    .directive('mdmDraggable', ['$document', function($document) {
     return function (scope, element, attr) {
       var startX = 0, startY = 0, x = 0, y = 0;
@@ -202,11 +259,6 @@ angular.module('emailingGeneratorApp')
         $document.unbind('mouseup', mouseup);
       }
     };
-  }])
-  .directive('cross', function() {
-    return {
-      template: '<a href="#" type="button" class="btn btn-danger btn-sm glyphicon glyphicon-remove croix"></a>'
-    };
-  });
+  }]);
 
     
