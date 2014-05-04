@@ -10,6 +10,7 @@ angular
     'firebase',
     'xeditable',
     'colorpicker.module'
+<<<<<<< HEAD
   ], function($httpProvider) {
   // Use x-www-form-urlencoded Content-Type
   $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
@@ -102,4 +103,7 @@ angular
     };
 
   });
+=======
+  ]);
+>>>>>>> a7d8dbc1cb1e89c8abd77354af473be2fd8ed6ae
 

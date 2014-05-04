@@ -1,6 +1,7 @@
 'use strict';
 
 angular.module('emailingGeneratorApp')
+<<<<<<< HEAD
     
   .controller('MainCtrl', function ($scope, $rootScope, $http, $firebase) {
      // NAVIGATION
@@ -8,6 +9,80 @@ angular.module('emailingGeneratorApp')
     $scope.main_countries = ['FR-fr','BE-fr','DE-de','ES-es','IT-it'];
 
     $scope.all_countries = ['AT-de','BE-fr','BE-nl','CH-de','CH-fr','CH-it','DE-de','ES-es','FR-fr','IT-it','LU-fr','NL-nl','UK-en']; 
+=======
+   .config(function ($stateProvider, $urlRouterProvider) {
+
+    $urlRouterProvider.otherwise('/generateur');
+
+    var mainCountries = ['BE-fr','DE-de','ES-es','FR-fr','IT-it'],
+        allCountries = ['AT-de','BE-fr','BE-nl','CH-de','CH-fr','CH-it','DE-de','ES-es','FR-fr','IT-it','LU-fr','NL-nl','UK-en'],
+        i = 0;
+
+    for (; i < mainCountries.length; i++) {
+        state_kit(mainCountries[i]);
+        state_kit700(mainCountries[i]);
+    };
+
+    for (; i < allCountries.length; i++) {
+        state_news(allCountries[i]);
+        state_news700(allCountries[i]);
+    };
+
+    function state_kit(country){
+        $stateProvider.state('kit_' + country, {
+            url: '/kit/' + country,
+            templateUrl: 'views/templates/newsletters/kit/kit-' + country + '.html'
+        });
+    };
+
+    function state_kit700(country){
+        $stateProvider.state('kit700_' + country, {
+            url: '/kit700/' + country,
+            templateUrl: 'views/templates/newsletters/kit700/kit700-' + country + '.html'
+        });
+    };
+
+    function state_news(country){
+        $stateProvider.state('news_' + country, {
+            url: '/news/' + country,
+            templateUrl: 'views/templates/newsletters/news/news-' + country + '.html'
+        });
+    };
+
+    function state_news700(country){
+        $stateProvider.state('news700_'+ country, {
+            url: '/news700/' + country,
+            templateUrl: 'views/templates/newsletters/news/news700-' + country + '.html'
+        });
+    };
+  })  
+  .controller('MainCtrl', function ($scope, $rootScope, $http, $firebase) {
+     // NAVIGATION
+    var mainCountries = ['FR-fr','BE-fr','DE-de','ES-es','IT-it'];
+    var allCountries = ['AT-de','BE-fr','BE-nl','CH-de','CH-fr','CH-it','DE-de','ES-es','FR-fr','IT-it','LU-fr','NL-nl','UK-en'];
+
+    $scope.main_countries = [
+        {
+            title: 'kit',
+            name: mainCountries
+        },
+        {
+            title: 'kit 700',
+            name: mainCountries
+        }
+    ];
+
+    $scope.all_countries = [
+        {
+            title: 'news',
+            name: allCountries
+        },
+        {
+            title: 'news 700',
+            name: allCountries
+        }
+    ];
+>>>>>>> a7d8dbc1cb1e89c8abd77354af473be2fd8ed6ae
 
     $scope.setColor = [
         {
@@ -67,6 +142,19 @@ angular.module('emailingGeneratorApp')
     colors.on('value', function(snap) {
       $scope.getColor = snap.val();
     });
+<<<<<<< HEAD
+=======
+
+    var xsrf = $.param({fkey: "key"});
+    $http({
+      url:'/scripts/generator/ss.json',
+      method : 'POST',
+      data: xsrf,
+      headers : {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}
+    }).success(function(data, status, headers, config) {
+      console.log(data);
+    })
+>>>>>>> a7d8dbc1cb1e89c8abd77354af473be2fd8ed6ae
     
   })
   .directive('mdmAddactiveclass', function() {
@@ -96,6 +184,7 @@ angular.module('emailingGeneratorApp')
       };
   })
    //get new code html of newsletter
+<<<<<<< HEAD
    .directive('mdmRenderfr', function() {
     return{    
         restrict:'A',
@@ -110,6 +199,9 @@ angular.module('emailingGeneratorApp')
     };
   })
    .directive('mdmRenderbe', function() {
+=======
+   .directive('mdmRender', function() {
+>>>>>>> a7d8dbc1cb1e89c8abd77354af473be2fd8ed6ae
     return{    
         restrict:'A',
         transclude:true,
@@ -122,7 +214,10 @@ angular.module('emailingGeneratorApp')
         }
     };
   })
+<<<<<<< HEAD
 
+=======
+>>>>>>> a7d8dbc1cb1e89c8abd77354af473be2fd8ed6ae
 //    directive('mdmRender', function ($compile) {
 
 //     var frTemplate = '<div class="entry-photo"><h2>&nbsp;</h2><div class="entry-img"><span><a href="{{rootDirectory}}{{content.data}}"><img ng-src="{{rootDirectory}}{{content.data}}" alt="entry photo"></a></span></div><div class="entry-text"><div class="entry-title">{{content.title}}</div><div class="entry-copy">{{content.description}}</div></div></div>';
