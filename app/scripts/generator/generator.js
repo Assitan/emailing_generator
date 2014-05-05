@@ -9,21 +9,6 @@ angular.module('emailingGeneratorApp')
 
     $scope.all_countries = ['AT-de','BE-fr','BE-nl','CH-de','CH-fr','CH-it','DE-de','ES-es','FR-fr','IT-it','LU-fr','NL-nl','UK-en']; 
 
-    $scope.setColor = [
-        {
-            title: 'background',
-            colour: ''
-        },
-        {
-            title:'texte header & footer',
-            colour: ''
-        },
-        {
-            title:'bordure',
-            colour: ''
-        }
-    ];
-
    //ANNÉE FOOTER
     $scope.year = new Date();
 
@@ -43,7 +28,7 @@ angular.module('emailingGeneratorApp')
         trackings_BE_nl = new Firebase(trackings + '/BE_nl'),
         trackings_LU_fr = new Firebase(trackings + '/LU_fr'),
         trackings_AT_de = new Firebase(trackings + '/AT_de'),
-        colors    = new Firebase(fb_url + '/generalColors');
+        colors          = new Firebase(fb_url + '/generalColors');
 
     //TRACKINGS
     /*$scope.addTrackings = function(){
@@ -51,13 +36,42 @@ angular.module('emailingGeneratorApp')
       trackings_DE.update($scope.tracking.DE);
     };*/
 
-    trackings_FR_fr.on('value', function(snap) {
-      $scope.getTracking_FR_fr = snap.val();
+     trackings_FR_fr.on('value', function(snap) {
+      $scope.getTrackings_FR_fr = snap.val();
     });
-
-    /*trackings_DE_de.on('value', function(snap) {
-      $scope.getTracking_DE_de = snap.val();
-    });*/
+     trackings_ES_es.on('value', function(snap) {
+      $scope.getTrackings_ES_es = snap.val();
+    });
+      trackings_DE_de.on('value', function(snap) {
+      $scope.getTrackings_DE_de = snap.val();
+    });
+     trackings_UK_en.on('value', function(snap) {
+      $scope.getTrackings_UK_en = snap.val();
+    });
+    trackings_IT_it.on('value', function(snap) {
+      $scope.getTrackings_IT_it = snap.val();
+    });
+     trackings_NL_nl.on('value', function(snap) {
+      $scope.getTrackings_NL_nl = snap.val();
+    });
+     trackings_CH_it.on('value', function(snap) {
+      $scope.getTrackings_CH_it = snap.val();
+    });
+     trackings_CH_fr.on('value', function(snap) {
+      $scope.getTrackings_CH_fr = snap.val();
+    });
+     trackings_BE_fr.on('value', function(snap) {
+      $scope.getTrackings_BE_fr = snap.val();
+    });
+     trackings_BE_nl.on('value', function(snap) {
+      $scope.getTrackings_BE_nl = snap.val();
+    });
+     trackings_LU_fr.on('value', function(snap) {
+      $scope.getTrackings_LU_fr = snap.val();
+    });
+     trackings_AT_de.on('value', function(snap) {
+      $scope.getTrackings_AT_de = snap.val();
+    });
 
     //COLORS
     $scope.setGeneralColor = function() {
@@ -77,25 +91,7 @@ angular.module('emailingGeneratorApp')
         });
       };
     })
-   .directive('mdmShowpane', function() {
-    return function (scope, element, attrs) {
-        element.click(function(){
-            if(element.next().is(':hidden')){ 
-              $(this).removeClass('glyphicon-cog')
-                     .addClass('glyphicon-chevron-right')
-                     .css('margin-right','229px');
-              element.next().show();
-            }else{
-              $(this).removeClass('glyphicon-chevron-right')
-                     .addClass('glyphicon-cog')
-                     .css('margin-right',0);
-              element.next().hide();     
-            }
-          });
-      };
-  })
    //get new code html of newsletter
-
    .directive('mdmRenderfr', function() {
     return{    
         restrict:'A',
@@ -106,11 +102,15 @@ angular.module('emailingGeneratorApp')
            /* transclude(function(clone){
                 element.find('textarea').append(clone);
               });*/
+            var val = element.val();
+            // var result = val.replace( '<ng-include src="\'views\/templates\/[a-z]\.html\'"><\/ng-include>', '');
+            var result = val.replace( '<ng-include src="\'views/templates/head.html\'"><\/ng-include>', '');
+            var result = result.replace( '<ng-include src="\'views/templates/scripts.html\'"><\/ng-include>', '');
+            //console.log(result);
         }
     };
   })
    .directive('mdmRenderbe', function() {
-
     return{    
         restrict:'A',
         transclude:true,

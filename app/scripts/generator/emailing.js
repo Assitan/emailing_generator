@@ -7,7 +7,7 @@ angular.module('emailingGeneratorApp')
   .controller('EmailingCtrl', function ($scope){
     $scope.edit = {
       strapline: ''
-    }; 
+    };
 
     var fb_url = 'https://emailing-generator.firebaseio.com',
         texts = new Firebase(fb_url + '/texts');

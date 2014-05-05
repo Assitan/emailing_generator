@@ -54,7 +54,6 @@
     
     <div id="settings" class="col-sm-2">
         <ul id="menu_colorpick" class="nav">
-
             <li>
                 <h4 id="general_title">Général</h4>
                 <ul id="general_menu" class="nav">
@@ -63,6 +62,7 @@
                         <div class="right_inputs">
                             <input class="colorpicker_input" ng-model="setColor.background.colour" type="text">
                             <button ng-model="setColor.background.colour" type="submit" class="btn btn-primary btn-xs ok_btn" ng-click="setGeneralColor()">OK</button> 
+
                         </div>
                     </li> 
                     <li>
@@ -91,15 +91,10 @@
                 </ul>
             </li>
 
-           <!--  <li>
-               <h4 id="general_title">Remplacer</h4>
-               <p id="result_tracking"><strong>début:</strong> {{get_tracking.begin}} <br><br><strong>fin:</strong> {{get_tracking.end}}</p>
-           </li> -->
-
             <li><h4>Générer</h4>
-            <a href="generate.html" type="button" target="_blank" class="btn btn-primary btn-xs">code généré</a>
-            <textarea mdm-renderfr cols="38" rows="2"></textarea>
-             <textarea mdm-renderbe cols="38" rows="2"></textarea>
+                <a href="generate.html" type="button" target="_blank" class="btn btn-primary btn-xs">code généré</a>
+                <textarea mdm-renderfr cols="38" rows="2"></textarea>
+                <textarea mdm-renderbe cols="38" rows="2"></textarea>
             </li>
         </ul>
     </div>
