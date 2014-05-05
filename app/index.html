@@ -8,10 +8,6 @@
     <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
-<<<<<<< HEAD
-=======
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
->>>>>>> a7d8dbc1cb1e89c8abd77354af473be2fd8ed6ae
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="bower_components/angular-bootstrap-colorpicker/css/colorpicker.css">
     <link href="bower_components/angular-xeditable/dist/css/xeditable.css" rel="stylesheet">
@@ -20,7 +16,6 @@
 
     <nav id="menu" class="navbar col-sm-1">
         <ul id="menu_content" class="nav nav-pills nav-stacked">
-<<<<<<< HEAD
             <li class="countries">
                 <a class="title" href="#">kit</a>
                 <ul class="nav nav-pills nav-stacked sub-menu">
@@ -50,21 +45,6 @@
                 <ul class="nav nav-pills nav-stacked sub-menu">
                     <li ng-repeat="news700 in all_countries">
                         <a ui-sref="news700_{{news700}}" mdm-addactiveclass>{{news700}}</a>
-=======
-            <li ng-repeat="main_country in main_countries" class="countries">
-                <a class="title" href="#">{{main_country.title}}</a>
-                <ul class="nav nav-pills nav-stacked sub-menu">
-                    <li ng-repeat="main_kit in main_country.name">
-                        <a ui-sref="kit_{{main_kit}}" mdm-addactiveclass>{{main_kit}}</a>
-                    </li>
-                </ul>           
-            </li>
-            <li ng-repeat="all_country in all_countries" class="countries">
-                <a class="title" href="#">{{all_country.title}}</a>
-                <ul class="nav nav-pills nav-stacked sub-menu">
-                    <li ng-repeat="all_kit in all_country.name">
-                        <a ui-sref="news_{{all_kit}}" mdm-addactiveclass>{{all_kit}}</a>
->>>>>>> a7d8dbc1cb1e89c8abd77354af473be2fd8ed6ae
                     </li>
                 </ul>           
             </li>
@@ -116,13 +96,9 @@
            </li> -->
 
             <li><h4>Générer</h4>
-<<<<<<< HEAD
             <a href="generate.html" type="button" target="_blank" class="btn btn-primary btn-xs">code généré</a>
             <textarea mdm-renderfr cols="38" rows="2"></textarea>
- <textarea mdm-renderbe cols="38" rows="2"></textarea>
-=======
-            <textarea mdm-render cols="40" rows="20"></textarea>
->>>>>>> a7d8dbc1cb1e89c8abd77354af473be2fd8ed6ae
+             <textarea mdm-renderbe cols="38" rows="2"></textarea>
             </li>
         </ul>
     </div>
@@ -155,23 +131,9 @@
       <!-- <p><span class="glyphicon glyphicon-heart"></span> from the frond-end dev team</p> -->
     </footer>
 
-<<<<<<< HEAD
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap.js"></script>
-=======
-    <!--[if lt IE 9]>
-    <script src="bower_components/es5-shim/es5-shim.js"></script>
-    <script src="bower_components/json3/lib/json3.min.js"></script>
-    <![endif]-->
-
-    <!-- build:js scripts/vendor.js -->
-    <!-- bower:js -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap.js"></script>
-    <script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/modal.js"></script>
->>>>>>> a7d8dbc1cb1e89c8abd77354af473be2fd8ed6ae
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
@@ -183,21 +145,10 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/angularFire/0.5.0/angularfire.min.js"></script>
     <script src="bower_components/angular-animate/angular-animate.min.js"></script>
     <script src="bower_components/angular-bootstrap-colorpicker/js/bootstrap-colorpicker-module.js"></script>  
-<<<<<<< HEAD
 
     <script src="scripts/app.js"></script>
     <script src="scripts/generator/generator.js"></script>
     <script src="scripts/generator/emailing.js"></script>
-=======
-    <!-- endbower -->
-    <!-- endbuild -->
-
-    <!-- build:js({.tmp,app}) scripts/scripts.js -->
-    <script src="scripts/app.js"></script>
-    <script src="scripts/generator/generator.js"></script>
-    <script src="scripts/generator/emailing.js"></script>
-    <!-- endbuild -->
->>>>>>> a7d8dbc1cb1e89c8abd77354af473be2fd8ed6ae
 
 </body>
 </html>
