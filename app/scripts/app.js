@@ -56,22 +56,24 @@ angular
     return angular.isObject(data) && String(data) !== '[object File]' ? param(data) : data;
   }];
 })
-  .config(function ($stateProvider, $urlRouterProvider) {
+  .config(function ($stateProvider, $urlRouterProvider,$locationProvider) {
 
     $urlRouterProvider.otherwise('/generateur');
 
     var mainCountries = ['BE-fr','DE-de','ES-es','FR-fr','IT-it'],
         allCountries = ['AT-de','BE-fr','BE-nl','CH-de','CH-fr','CH-it','DE-de','ES-es','FR-fr','IT-it','LU-fr','NL-nl','UK-en'],
-        i = 0;
+        i = 0,
+        j = 0;
 
-    for (; i < mainCountries.length; i++) {
+    for (var i = 0; i < mainCountries.length; i++) {
         state_kit(mainCountries[i]);
         state_kit700(mainCountries[i]);
     };
 
-    for (; i < allCountries.length; i++) {
-        state_news(allCountries[i]);
-        state_news700(allCountries[i]);
+    for (var j = 0; j < allCountries.length; j++) {
+        state_news(allCountries[j]);
+        state_news700(allCountries[j]);
+
     };
 
     function state_kit(country){
@@ -98,9 +100,12 @@ angular
     function state_news700(country){
         $stateProvider.state('news700_'+ country, {
             url: '/news700/' + country,
-            templateUrl: 'views/templates/newsletters/news/news700-' + country + '.html'
+            templateUrl: 'views/templates/newsletters/news700/news700-' + country + '.html'
         });
     };
+
+    // use the HTML5 History API
+    $locationProvider.html5Mode(true);
 
   });
 
