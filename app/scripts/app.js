@@ -58,7 +58,20 @@ angular
 })
   .config(function ($stateProvider, $urlRouterProvider,$locationProvider) {
 
-    $urlRouterProvider.otherwise('/generateur');
+    $urlRouterProvider.otherwise('/');
+
+    $stateProvider.state('accueil', {
+        url: 'main',
+        templateUrl: 'views/main.html'
+    })
+    .state('generate', {
+        url: 'generate',
+        templateUrl: 'views/generate.html'
+    })
+    .state('render', {
+        url: 'render',
+        templateUrl: 'views/render.html'
+    });
 
     var mainCountries = ['BE-fr','DE-de','ES-es','FR-fr','IT-it'],
         allCountries = ['AT-de','BE-fr','BE-nl','CH-de','CH-fr','CH-it','DE-de','ES-es','FR-fr','IT-it','LU-fr','NL-nl','UK-en'],
@@ -77,35 +90,33 @@ angular
     };
 
     function state_kit(country){
-        $stateProvider.state('kit_' + country, {
+        $stateProvider.state('accueil.kit_' + country, {
             url: '/kit/' + country,
             templateUrl: 'views/templates/newsletters/kit/kit-' + country + '.html'
         });
     };
 
     function state_kit700(country){
-        $stateProvider.state('kit700_' + country, {
+        $stateProvider.state('accueil.kit700_' + country, {
             url: '/kit700/' + country,
             templateUrl: 'views/templates/newsletters/kit700/kit700-' + country + '.html'
         });
     };
 
     function state_news(country){
-        $stateProvider.state('news_' + country, {
+        $stateProvider.state('accueil.news_' + country, {
             url: '/news/' + country,
             templateUrl: 'views/templates/newsletters/news/news-' + country + '.html'
         });
     };
 
     function state_news700(country){
-        $stateProvider.state('news700_'+ country, {
+        $stateProvider.state('accueil.news700_'+ country, {
             url: '/news700/' + country,
             templateUrl: 'views/templates/newsletters/news700/news700-' + country + '.html'
         });
     };
 
-    // use the HTML5 History API
     $locationProvider.html5Mode(true);
-
   });
 

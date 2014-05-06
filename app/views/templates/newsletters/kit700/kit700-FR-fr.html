@@ -1,6 +1,6 @@
 <ng-include src="'views/templates/head.html'"></ng-include>
   <body style="background-color:{{getColor.background.colour}};" marginwidth="0" marginheight="0">
-    <span id="body_style" style="display:block;">
+    <span id="body_style" style="display:block;background-color:{{getColor.background.colour}};">
       <table cellpadding="0" cellspacing="0" border="0" width="700" align="center">
         <tr>
           <td align="center" width="100%" style="padding:15px 0 20px 0;font-family:Arial, Helvetica, sans-serif;font-size:11px;color:#808285;">
@@ -70,14 +70,14 @@
                 </td>
               </tr>
               <tr>
-                <td colspan="2" align="center" style="border-top:8px solid #37c1c3;"><img src="http://images.mperf.com/images/Clients/m/MaisonDuMonde/images/0EM/_TEMPLATE-NL/common/footer-alpha.png" alt="Maisons du monde"></td>
+                <td colspan="2" align="center" style="border-top:8px solid {{getColor.border.colour}};"><img src="http://images.mperf.com/images/Clients/m/MaisonDuMonde/images/0EM/_TEMPLATE-NL/common/footer-alpha.png" alt="Maisons du monde"></td>
               </tr>
             </table>
           </td>
         </tr>
         <tr>
           <td align="center" style="padding-bottom:15px;font-family:Arial, Helvetica, sans-serif;font-size:11px;color:#808285;">
-            Maisons du Monde, c'est des meubles et objets de décoration disponibles dans 12 pays, à travers plus de 200 magasins.<br>Des créations originales et exclusives, conçues par nos stylistes, puis fabriquées par des partenaires choisis avec soin.<br> Avec Maisons du Monde, retrouvez plus de 3 000 produits disponibles 24/24 d'un simple clic pour le salon,<br> la chambre, la cuisine ou le jardin. Toujours plus de meubles sur <a href="{{getTrackings_FR_fr.begin}}http://www.maisonsdumonde.com/{{getTrackings_FR_fr.end}}" style="color:#808285;" target="_blank" guid="0044L90" tracking="Enabled" dataminingname="notre site" linktype="External" category="0">notre site</a> et sur notre <a href="{{getTrackings_FR_fr.begin}}http://catalogue.maisonsdumonde.com/FR/{{getTrackings_FR_fr.end}}" style="color:#808285;" target="_blank" guid="0044L91" tracking="Enabled" dataminingname="catalogue en ligne" linktype="External" category="0">catalogue en ligne</a>. <br><br>© Maisons du Monde 2014
+            Maisons du Monde, c'est des meubles et objets de décoration disponibles dans 12 pays, à travers plus de 200 magasins.<br>Des créations originales et exclusives, conçues par nos stylistes, puis fabriquées par des partenaires choisis avec soin.<br> Avec Maisons du Monde, retrouvez plus de 3 000 produits disponibles 24/24 d'un simple clic pour le salon,<br> la chambre, la cuisine ou le jardin. Toujours plus de meubles sur <a href="{{getTrackings_FR_fr.begin}}http://www.maisonsdumonde.com/{{getTrackings_FR_fr.end}}" style="color:#808285;" target="_blank" guid="0044L90" tracking="Enabled" dataminingname="notre site" linktype="External" category="0">notre site</a> et sur notre <a href="{{getTrackings_FR_fr.begin}}http://catalogue.maisonsdumonde.com/FR/{{getTrackings_FR_fr.end}}" style="color:#808285;" target="_blank" guid="0044L91" tracking="Enabled" dataminingname="catalogue en ligne" linktype="External" category="0">catalogue en ligne</a>. <br><br>© Maisons du Monde {{ year |date:'yyyy' }}
           </td>
         </tr>
       </table>

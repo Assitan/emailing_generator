@@ -1,6 +1,6 @@
 <ng-include src="'views/templates/head.html'"></ng-include>
   <body style="background-color:{{getColor.background.colour}};" marginwidth="0" marginheight="0">
-    <span id="body_style" style="display:block;">
+    <span id="body_style" style="display:block;background-color:{{getColor.background.colour}};">
       <table cellpadding="0" cellspacing="0" border="0" width="700" align="center">
         <tr>
           <td align="center" width="100%" style="padding:15px 0 20px 0;font-family:Arial, Helvetica, sans-serif;font-size:11px;color:#808285;">
@@ -61,14 +61,14 @@
                 </td>
               </tr>
               <tr>
-                <td align="center" style="border-top:8px solid #37c1c3;"><img src="http://images.mperf.com/images/Clients/m/MaisonDuMonde/images/0EM/_TEMPLATE-NL/common/footer-alpha.png" alt="Maisons du monde"></td>
+                <td align="center" style="border-top:8px solid {{getColor.border.colour}};"><img src="http://images.mperf.com/images/Clients/m/MaisonDuMonde/images/0EM/_TEMPLATE-NL/common/footer-alpha.png" alt="Maisons du monde"></td>
               </tr>
             </table>
           </td>
         </tr>
         <tr>
           <td align="center" style="padding-bottom:15px;font-family:Arial, Helvetica, sans-serif;font-size:11px;color:#808285;">
-             U ontvangt deze e-mail omdat u geabonneerd bent op de nieuwsbrief van Maisons du Monde. In overeenstemming met de<br>(Franse) wet "Informatique & Libertés" van 06/01/1978 betreffende de bescherming van persoonsgegevens heeft u een<br>recht op inzage, verbetering en verwijdering van de gegevens die op u betrekking hebben.<br>Steeds meer meubelen op <a href="{{getTrackings_NL_nl.begin}}http://www.maisonsdumonde.com/NL/nl{{getTrackings_NL_nl.end}}" style="color:#808285;text-decoration:underline;" target="_blank" guid="003HQGJ" tracking="Enabled" dataminingname="maisonsdumonde.com" linktype="External" category="0">maisonsdumonde.com</a> en in onze <a href="{{getTrackings_NL_nl.begin}}http://catalogue.maisonsdumonde.com/NL/{{getTrackings_NL_nl.end}}" style="color:#808285;" target="_blank" guid="003HQGK" tracking="Enabled" dataminingname="online catalogus" linktype="External" category="0">online catalogus</a>.<br><br><a style="color:#808285; text-decoration:underline;" href="Gestion Profil OK_NL" target="_blank">Klik hier</a> om u uit te schrijven.<br>© Maisons du Monde 2014
+             U ontvangt deze e-mail omdat u geabonneerd bent op de nieuwsbrief van Maisons du Monde. In overeenstemming met de<br>(Franse) wet "Informatique & Libertés" van 06/01/1978 betreffende de bescherming van persoonsgegevens heeft u een<br>recht op inzage, verbetering en verwijdering van de gegevens die op u betrekking hebben.<br>Steeds meer meubelen op <a href="{{getTrackings_NL_nl.begin}}http://www.maisonsdumonde.com/NL/nl{{getTrackings_NL_nl.end}}" style="color:#808285;text-decoration:underline;" target="_blank" guid="003HQGJ" tracking="Enabled" dataminingname="maisonsdumonde.com" linktype="External" category="0">maisonsdumonde.com</a> en in onze <a href="{{getTrackings_NL_nl.begin}}http://catalogue.maisonsdumonde.com/NL/{{getTrackings_NL_nl.end}}" style="color:#808285;" target="_blank" guid="003HQGK" tracking="Enabled" dataminingname="online catalogus" linktype="External" category="0">online catalogus</a>.<br><br><a style="color:#808285; text-decoration:underline;" href="Gestion Profil OK_NL" target="_blank">Klik hier</a> om u uit te schrijven.<br>© Maisons du Monde {{ year |date:'yyyy' }}
           </td>
         </tr>
       </table>

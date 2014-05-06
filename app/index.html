@@ -5,127 +5,37 @@
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Générateur de newsletters</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="bower_components/angular-bootstrap-colorpicker/css/colorpicker.css">
     <link href="bower_components/angular-xeditable/dist/css/xeditable.css" rel="stylesheet">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles/htmail.css">
     <base href="/">
   </head>
-  <body role="main" ng-app="emailingGeneratorApp" ng-controller="MainCtrl" style="background-color:{{getColor.background.colour}};">
+  <body role="main" ng-app="emailingGeneratorApp" ng-controller="MainCtrl">
 
-    <nav id="menu" class="navbar col-sm-1">
-        <ul id="menu_content" class="nav nav-pills nav-stacked">
-            <li class="countries">
-                <a class="title" href="#">kit</a>
-                <ul class="nav nav-pills nav-stacked sub-menu">
-                    <li ng-repeat="kit in main_countries">
-                        <a ui-sref="kit_{{kit}}" mdm-addactiveclass>{{kit}}</a>
-                    </li>
-                </ul>           
-            </li>
-            <li class="countries">
-                <a class="title" href="#">kit700</a>
-                <ul class="nav nav-pills nav-stacked sub-menu">
-                    <li ng-repeat="kit700 in main_countries">
-                        <a ui-sref="kit700_{{kit700}}" mdm-addactiveclass>{{kit700}}</a>
-                    </li>
-                </ul>           
-            </li>
-            <li class="countries">
-                <a class="title" href="#">news</a>
-                <ul class="nav nav-pills nav-stacked sub-menu">
-                    <li ng-repeat="news in all_countries">
-                        <a ui-sref="news_{{news}}" mdm-addactiveclass>{{news}}</a>
-                    </li>
-                </ul>           
-            </li>
-            <li class="countries">
-                <a class="title" href="#">news700</a>
-                <ul class="nav nav-pills nav-stacked sub-menu">
-                    <li ng-repeat="news700 in all_countries">
-                        <a ui-sref="news700_{{news700}}" mdm-addactiveclass>{{news700}}</a>
-                    </li>
-                </ul>           
-            </li>
-        </ul>     
-    </nav>
-    
-    <div id="settings" class="col-sm-2">
-        <ul id="menu_colorpick" class="nav">
-            <li>
-                <h4 id="general_title">Général</h4>
-                <ul id="general_menu" class="nav">
-                    <li>
-                        <button colorpicker colorpicker-fixed-position="true" ng-model="setColor.background.colour" type="button" class="btn_left btn btn-primary btn-xs">background</button> 
-                        <div class="right_inputs">
-                            <input class="colorpicker_input" ng-model="setColor.background.colour" type="text">
-                            <button ng-model="setColor.background.colour" type="submit" class="btn btn-primary btn-xs ok_btn" ng-click="setGeneralColor()">OK</button> 
+    <ul class="nav nav-tabs">
+        <li mdm-addactiveclass hide-jumbo><a ui-sref="accueil">Modifier</a></li>
+        <li mdm-addactiveclass hide-jumbo><a ui-sref="generate">Générer</a></li>
+        <li mdm-addactiveclass hide-jumbo><a ui-sref="render">Découper</a></li>
+    </ul>
 
-                        </div>
-                    </li> 
-                    <li>
-                        <button colorpicker colorpicker-fixed-position="true" ng-model="setColor.text.colour" type="button" class="btn btn-primary btn-xs btn_left">texte header & footer</button> 
-                        <div class="right_inputs">
-                            <input class="colorpicker_input" ng-model="setColor.text.colour" type="text">
-                            <button ng-model="setColor.text.colour" type="submit" class="btn btn-primary btn-xs ok_btn" ng-click="setGeneralColor()">OK</button> 
-                        </div>
-                    </li>  
-                    <li>
-                        <button colorpicker colorpicker-fixed-position="true" ng-model="setColor.border.colour" type="button" ng-click="setGeneralColor()" class="btn_left btn btn-primary btn-xs">bordure</button> 
-                        <div class="right_inputs">
-                            <input class="colorpicker_input" ng-model="setColor.border.colour" type="text">
-                            <button ng-model="setColor.border.colour" type="submit" class="btn btn-primary btn-xs ok_btn" ng-click="setGeneralColor()">OK</button> 
-                        </div>
-                    </li>                 
-                </ul>
-            </li>
-
-            <li>
-                <h4 id="sections_title">Sections</h4>
-                <ul id="sections_menu" class="nav">
-                    <!-- <li ng-repeat="sectionColor in settingsSectionColor">
-                        <button id="{{sectionColor.id}}" type="button" class="btn btn-primary btn-xs">{{sectionColor.label}}</button>
-                    </li> -->
-                </ul>
-            </li>
-
-            <li><h4>Générer</h4>
-                <a href="generate.html" type="button" target="_blank" class="btn btn-primary btn-xs">code généré</a>
-                <textarea mdm-renderfr cols="38" rows="2"></textarea>
-                <textarea mdm-renderbe cols="38" rows="2"></textarea>
-            </li>
-        </ul>
-    </div>
-
-    <div class="modal fade" id="replace_links_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title">Remplacer les liens de trackings</h4>
-                </div>
-                <div class="modal-body">
-                    <form role="form" id="form_replace-links">
-                        <div class="input-group">
-                            FR
-                            <input type="text" class="form-control" ng-model="tracking.FR.begin" placeholder="Début tracking">
-                            <input type="text" class="form-control" ng-model="tracking.FR.end" placeholder="Fin du tracking"><br>
-                            <button class="btn btn-primary" ng-click="addTrackings()">Remplacer</button>
-                        </div> 
-                      
-                    </form>
-                </div>
-            </div>
-        </div>
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Générateur de newsletters</h1>
+       <!--  <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+        <p><a class="btn btn-primary btn-lg" role="button">Learn more »</a></p> -->
+      </div>
     </div>
     
-    <div class="container newsletter" ui-view ng-model="newsletter" ng-controller="EmailingCtrl"></div>
+    <div id="main" ui-view></div>
 
-    <footer class="footer">
-      <!-- <p><span class="glyphicon glyphicon-heart"></span> from the frond-end dev team</p> -->
-    </footer>
+     <!--<footer class="footer">
+      <p><span class="glyphicon glyphicon-heart"></span> from the frond-end dev team</p>
+    </footer> -->
 
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
@@ -145,6 +55,6 @@
     <script src="scripts/app.js"></script>
     <script src="scripts/generator/generator.js"></script>
     <script src="scripts/generator/emailing.js"></script>
-
+    <script src="scripts/generator/htmail.js"></script>
 </body>
 </html>

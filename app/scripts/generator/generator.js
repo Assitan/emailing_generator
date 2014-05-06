@@ -3,8 +3,8 @@
 angular.module('emailingGeneratorApp')
     
   .controller('MainCtrl', function ($scope, $rootScope, $http, $firebase) {
+
      // NAVIGATION
-  
     $scope.main_countries = ['FR-fr','BE-fr','DE-de','ES-es','IT-it'];
 
     $scope.all_countries = ['AT-de','BE-fr','BE-nl','CH-de','CH-fr','CH-it','DE-de','ES-es','FR-fr','IT-it','LU-fr','NL-nl','UK-en']; 
@@ -31,11 +31,6 @@ angular.module('emailingGeneratorApp')
         colors          = new Firebase(fb_url + '/generalColors');
 
     //TRACKINGS
-    /*$scope.addTrackings = function(){
-      trackings_FR.update($scope.tracking.FR);
-      trackings_DE.update($scope.tracking.DE);
-    };*/
-
      trackings_FR_fr.on('value', function(snap) {
       $scope.getTrackings_FR_fr = snap.val();
     });
@@ -75,7 +70,9 @@ angular.module('emailingGeneratorApp')
 
     //COLORS
     $scope.setGeneralColor = function() {
-        colors.update($scope.setColor);
+        $scope.$watch('setColor', function(newVal, oldVal) {
+            colors.update(newVal);
+        });
     };
 
     colors.on('value', function(snap) {
@@ -84,7 +81,7 @@ angular.module('emailingGeneratorApp')
   })
   .directive('mdmAddactiveclass', function() {
       return function (scope, element, attrs) {
-        element.siblings(':first').addClass('active');
+        element.siblings(':first-child').addClass('active');
         element.click(function(){
             element.siblings().removeClass('active');
             $(this).addClass('active');     
@@ -94,7 +91,6 @@ angular.module('emailingGeneratorApp')
    //get new code html of newsletter
    .directive('mdmRenderfr', function() {
     return{    
-        restrict:'A',
         transclude:true,
         templateUrl:'/views/templates/newsletters/kit/kit-FR-fr.html',   
         link:function(scope,element,attrs,ctrl,transclude){
@@ -103,7 +99,7 @@ angular.module('emailingGeneratorApp')
                 element.find('textarea').append(clone);
               });*/
             var val = element.val();
-            // var result = val.replace( '<ng-include src="\'views\/templates\/[a-z]\.html\'"><\/ng-include>', '');
+            // var result = val.replace( /<ng-include src="\'views\/templates\/[a-z]\.html\'"><\/ng-include>/g, '');
             var result = val.replace( '<ng-include src="\'views/templates/head.html\'"><\/ng-include>', '');
             var result = result.replace( '<ng-include src="\'views/templates/scripts.html\'"><\/ng-include>', '');
             //console.log(result);
@@ -112,17 +108,44 @@ angular.module('emailingGeneratorApp')
   })
    .directive('mdmRenderbe', function() {
     return{    
-        restrict:'A',
         transclude:true,
         templateUrl:'/views/templates/newsletters/kit/kit-BE-fr.html',   
         link:function(scope,element,attrs,ctrl,transclude){
-            //element.find('textarea').html(transclude());
-            transclude(function(clone){
-                element.find('textarea').append(clone);
-              });
+            element.find('textarea').html(transclude());
         }
     };
   })
+   .directive('mdmRender', function() {
+
+     var frTemplate = 'kit-FR-fr.html';
+     var beTemplate = 'kit-BE-fr.html';
+
+     var getTemplate = function(contentType) {
+        var template = '';
+
+        switch(contentType) {
+            case 'fr':
+                template = frTemplate;
+                break;
+            case 'be':
+                template = beTemplate;
+                break;
+        }
+
+        return template;
+    }
+
+    var linker = function(scope, element, attrs,transclude) {
+        //scope.rootDirectory = '/views/templates/newsletters/kit/' + template;
+        element.find('textarea').html(transclude());
+    }
+
+    return {
+        transclude: true,
+        templateUrl: '/views/templates/newsletters/kit/' + template,
+        link: linker
+    };
+ })
 
 //    directive('mdmRender', function ($compile) {
 
@@ -161,6 +184,13 @@ angular.module('emailingGeneratorApp')
        
 //     };
 // })
+    .directive('hideJumbo', [function () {
+        return function (scope, element, attrs) {
+            element.click(function(){
+                element.parent().next('.jumbotron').hide();
+            })
+        };
+    }])
    .directive('mdmDraggable', ['$document', function($document) {
     return function (scope, element, attr) {
       var startX = 0, startY = 0, x = 0, y = 0;

@@ -12,67 +12,27 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
     padding: 0.2em 0;
 }
 
-/* Space out content a bit */
 body {
     padding-top: 20px;
     padding-bottom: 20px;
     position: relative;
 }
 
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.marketing,
-.footer {
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
-/* Custom page header */
-.header {
-    border-bottom: 1px solid #e5e5e5;
-}
-
-/* Make the masthead heading the same height as the navigation */
-.header h3 {
-    margin-top: 0;
-    margin-bottom: 0;
-    line-height: 40px;
-    padding-bottom: 19px;
-}
-
-/* Custom page footer */
 .footer {
     padding-top: 19px;
     color: #777;
     border-top: 1px solid #e5e5e5;
 }
 
-.container-narrow > hr {
-    margin: 30px 0;
-}
-
-/* Main marketing message and sign up button */
-.jumbotron {
-    text-align: center;
-    border-bottom: 1px solid #e5e5e5;
-}
-
-.jumbotron .btn {
-    font-size: 21px;
-    padding: 14px 24px;
-}
-
-/* Supporting marketing content */
-.marketing {
-    margin: 40px 0;
-}
-
-.marketing p + h4 {
-    margin-top: 28px;
-}
-
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important;
+}
+
+.nav-tabs{
+    padding: 0 10px !important;
+    li{
+        cursor: pointer;
+    }
 }
 
 /* 
@@ -201,12 +161,6 @@ body {
  */
 
 .newsletter{
-
-    .generate-btn{
-        position: absolute;
-        left: 0;
-        margin-left: 353px;
-    }
    
     .section{
    	
@@ -231,6 +185,36 @@ body {
 
 .colpick_hex{
     z-index: 200;
+}
+
+/* 
+ * Page generate
+ */
+
+#generate{
+    margin-top: 30px;
+
+    #generate_container{
+        .generate_content{
+            li{
+                float: left;
+                margin: 0 10px;
+                
+                button{
+                    display: none;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    margin-top: 35px;
+                }
+
+                &:hover button{
+                    display: block;
+                }
+            }
+        }
+    }
+   
 }
 
 /* 

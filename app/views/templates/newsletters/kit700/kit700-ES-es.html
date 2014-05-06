@@ -1,6 +1,6 @@
 <ng-include src="'views/templates/head.html'"></ng-include>
   <body style="background-color:{{getColor.background.colour}};" marginwidth="0" marginheight="0">
-    <span id="body_style" style="display:block;">
+    <span id="body_style" style="display:block;background-color:{{getColor.background.colour}};">
       <table cellpadding="0" cellspacing="0" border="0" width="700" align="center">
         <tr>
           <td align="center" width="100%" style="padding:15px 0 20px 0;font-family:Arial, Helvetica, sans-serif;font-size:11px;color:#808285;">
@@ -67,14 +67,14 @@
                 </td>
               </tr>
               <tr>
-                <td colspan="2" align="center" style="border-top:8px solid #37c1c3;"><img src="http://images.mperf.com/images/Clients/m/MaisonDuMonde/images/0EM/_TEMPLATE-NL/common/footer-alpha.png" alt="Maisons du monde"></td>
+                <td colspan="2" align="center" style="border-top:8px solid {{getColor.border.colour}};"><img src="http://images.mperf.com/images/Clients/m/MaisonDuMonde/images/0EM/_TEMPLATE-NL/common/footer-alpha.png" alt="Maisons du monde"></td>
               </tr>
             </table>
           </td>
         </tr>
         <tr>
           <td align="center" style="padding-bottom:15px;font-family:Arial, Helvetica, sans-serif;font-size:11px;color:#808285;">
-            Maisons du Monde es muebles y artículos de decoración disponibles en 12 países, gracias a una red de más de 200<br> tiendas. Creaciones originales y exclusivas, diseñadas por nuestros estilistas para más tarde ser fabricadas por nuestros<br>colaboradores elegidos con mucho tacto. Con Maisons du Monde, encuentra más de 3 000 productos disponibles 24h en un<br>simple clic para el comedor, la habitación, la cocina o el jardín.<br>Encontrarás más muebles en <a href="{{getTrackings_ES_es.begin}}http://www.maisonsdumonde.com/ES/es{{getTrackings_ES_es.end}}" style="color:#808285;" target="_blank" guid="0044L90" tracking="Enabled" dataminingname="nuestro sitio web" linktype="External" category="0">nuestro sitio web</a> y en nuestros <a href="{{getTrackings_ES_es.begin}}http://catalogue.maisonsdumonde.com/ES/{{getTrackings_ES_es.end}}" style="color:#808285;" target="_blank" guid="0044L91" tracking="Enabled" dataminingname="catálogos en línea" linktype="External" category="0">catálogos en línea</a>.<br><br>© Maisons du Monde 2014
+            Maisons du Monde es muebles y artículos de decoración disponibles en 12 países, gracias a una red de más de 200<br> tiendas. Creaciones originales y exclusivas, diseñadas por nuestros estilistas para más tarde ser fabricadas por nuestros<br>colaboradores elegidos con mucho tacto. Con Maisons du Monde, encuentra más de 3 000 productos disponibles 24h en un<br>simple clic para el comedor, la habitación, la cocina o el jardín.<br>Encontrarás más muebles en <a href="{{getTrackings_ES_es.begin}}http://www.maisonsdumonde.com/ES/es{{getTrackings_ES_es.end}}" style="color:#808285;" target="_blank" guid="0044L90" tracking="Enabled" dataminingname="nuestro sitio web" linktype="External" category="0">nuestro sitio web</a> y en nuestros <a href="{{getTrackings_ES_es.begin}}http://catalogue.maisonsdumonde.com/ES/{{getTrackings_ES_es.end}}" style="color:#808285;" target="_blank" guid="0044L91" tracking="Enabled" dataminingname="catálogos en línea" linktype="External" category="0">catálogos en línea</a>.<br><br>© Maisons du Monde {{ year |date:'yyyy' }}
           </td>
         </tr>
       </table>

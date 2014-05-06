@@ -1,6 +1,6 @@
 <ng-include src="'views/templates/head.html'"></ng-include>
   <body style="background-color:{{getColor.background.colour}};" marginwidth="0" marginheight="0">
-    <span id="body_style" style="display:block;">
+    <span id="body_style" style="display:block;background-color:{{getColor.background.colour}};">
       <table cellpadding="0" cellspacing="0" border="0" width="700" align="center">
         <tr>
           <td align="center" width="100%" style="padding:15px 0 20px 0;font-family:Arial, Helvetica, sans-serif;font-size:11px;color:#808285;">
@@ -69,7 +69,7 @@
                 </td>
               </tr>
               <tr>
-                <td colspan="2" align="center" style="border-top:8px solid #37c1c3;"><img src="http://images.mperf.com/images/Clients/m/MaisonDuMonde/images/0EM/_TEMPLATE-NL/common/footer-alpha.png" alt="Maisons du monde"></td>
+                <td colspan="2" align="center" style="border-top:8px solid {{getColor.border.colour}};"><img src="http://images.mperf.com/images/Clients/m/MaisonDuMonde/images/0EM/_TEMPLATE-NL/common/footer-alpha.png" alt="Maisons du monde"></td>
               </tr>
             </table>
           </td>
@@ -77,7 +77,7 @@
         <tr>
           <td align="center" style="padding-bottom:15px;font-family:Arial, Helvetica, sans-serif;font-size:11px;color:#808285;">
             Ricevi questa e-mail perché sei iscritto(a) alla newsletter di Maisons du Monde.<br>In conformità con la Legge francese Informatica e Libertà del 06/01/1978, disponi del diritto di accesso,<br>rettifica e soppressione dei dati a te correlati.<br>Sempre più mobili sul nostro <a href="{{getTrackings_IT_it.begin}}http://www.maisonsdumonde.com/IT/it{{getTrackings_IT_it.end}}" style="color:#808285;" target="_blank" guid="003XQOZ" tracking="Enabled" dataminingname="sito web" linktype="External" category="0">sito web</a> e sui nostri <a href="{{getTrackings_IT_it.begin}}http://catalogue.maisonsdumonde.com/IT/{{getTrackings_IT_it.end}}" style="color:#808285;" target="_blank" guid="003XQP0" tracking="Enabled" dataminingname="cataloghi online" linktype="External" category="0">cataloghi online</a>. <br><br>
-            Per disiscriverti <a style="color:#808285; text-decoration:underline;" href="Gestion Profil OK_IT" target="_blank" dataminingname="Clicca qui" tracking="Enabled" guid="003XQP1" linktype="Form" category="0">clicca qui</a>.<br> © Maisons du Monde 2014 
+            Per disiscriverti <a style="color:#808285; text-decoration:underline;" href="Gestion Profil OK_IT" target="_blank" dataminingname="Clicca qui" tracking="Enabled" guid="003XQP1" linktype="Form" category="0">clicca qui</a>.<br> © Maisons du Monde {{ year |date:'yyyy' }} 
           </td>
         </tr>
       </table>

@@ -1,6 +1,6 @@
 <ng-include src="'views/templates/head.html'"></ng-include>
   <body style="background-color:{{getColor.background.colour}};" marginwidth="0" marginheight="0">
-    <span id="body_style" style="display:block;">
+    <span id="body_style" style="display:block;background-color:{{getColor.background.colour}};">
       <table cellpadding="0" cellspacing="0" border="0" width="700" align="center">
         <tr>
           <td align="center" width="100%" style="padding:15px 0 20px 0;font-family:Arial, Helvetica, sans-serif;font-size:11px;color:#808285;">
@@ -72,7 +72,7 @@
                 </td>
               </tr>
               <tr>
-                <td colspan="2" align="center" style="border-top:8px solid #37c1c3;"><img src="http://images.mperf.com/images/Clients/m/MaisonDuMonde/images/0EM/_TEMPLATE-NL/common/footer-alpha.png" alt="Maisons du monde"></td>
+                <td colspan="2" align="center" style="border-top:8px solid {{getColor.border.colour}};"><img src="http://images.mperf.com/images/Clients/m/MaisonDuMonde/images/0EM/_TEMPLATE-NL/common/footer-alpha.png" alt="Maisons du monde"></td>
               </tr>
             </table>
           </td>
@@ -80,7 +80,7 @@
         <tr>
           <td align="center" style="padding-bottom:15px;font-family:Arial, Helvetica, sans-serif;font-size:11px;color:#808285;">
             Vous recevez cet e-mail car vous êtes abonné(e) à la newsletter Maisons du Monde.<br>Conformément à la loi informatique et libertés du 6 janvier 1978, vous disposez d'un droit d'accès,<br>de rectification et de suppression des données vous concernant.<br>Toujours plus de meubles sur <a href="{{getTrackings_LU_fr.begin}}http://www.maisonsdumonde.com/LU/fr{{getTrackings_LU_fr.end}}" style="color:#808285;" target="_blank" guid="0044L90" tracking="Enabled" dataminingname="notre site" linktype="External" category="0">notre site</a> et sur notre <a href="{{getTrackings_LU_fr.begin}}http://catalogue.maisonsdumonde.com/LU-fr/{{getTrackings_LU_fr.end}}" style="color:#808285;" target="_blank" guid="0044L91" tracking="Enabled" dataminingname="catalogue en ligne" linktype="External" category="0">catalogue en ligne</a>. <br><br>
-            Pour vous désabonner, <a style="color:#808285; text-decoration:underline;" href="Gestion Profil OK" target="_blank" dataminingname="cliquez ici." tracking="Enabled" guid="0044L92" linktype="Form" category="0">cliquez ici.</a><br>© Maisons du Monde 2014
+            Pour vous désabonner, <a style="color:#808285; text-decoration:underline;" href="Gestion Profil OK" target="_blank" dataminingname="cliquez ici." tracking="Enabled" guid="0044L92" linktype="Form" category="0">cliquez ici.</a><br>© Maisons du Monde {{ year |date:'yyyy' }}
           </td>
         </tr>
       </table>
