@@ -9,7 +9,8 @@ angular
     'ui.router',
     'firebase',
     'xeditable',
-    'colorpicker.module'
+    'colorpicker.module',
+    'ngClipboard'
 
   ], function($httpProvider) {
   // Use x-www-form-urlencoded Content-Type
@@ -118,5 +119,8 @@ angular
     };
 
     $locationProvider.html5Mode(true);
-  });
+  })
+    .config(['ngClipProvider', function(ngClipProvider) { 
+        ngClipProvider.setPath("bower_components/zeroclipboard/ZeroClipboard.swf");
+    }]);
 

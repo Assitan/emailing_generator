@@ -12,6 +12,7 @@ angular.module('emailingGeneratorApp')
    //ANNÉE FOOTER
     $scope.year = new Date();
 
+
     //AJOUT DES TRACKINGS DS LA BDD 
     //TODO : mettre dans un factory
     var fb_url = new Firebase('https://emailing-generator.firebaseio.com'),
@@ -78,6 +79,7 @@ angular.module('emailingGeneratorApp')
     colors.on('value', function(snap) {
       $scope.getColor = snap.val();
     });
+
   })
   .directive('mdmAddactiveclass', function() {
       return function (scope, element, attrs) {
@@ -95,9 +97,15 @@ angular.module('emailingGeneratorApp')
         templateUrl:'/views/templates/newsletters/kit/kit-FR-fr.html',   
         link:function(scope,element,attrs,ctrl,transclude){
             element.find('textarea').html(transclude());
-           /* transclude(function(clone){
-                element.find('textarea').append(clone);
-              });*/
+            
+            scope.getTextToCopy = function() {
+                return element.val();
+            };
+
+            scope.infoCopy = function () {
+                element.siblings('p').html('copié').delay(400).fadeOut();
+            }
+
             var val = element.val();
             // var result = val.replace( /<ng-include src="\'views\/templates\/[a-z]\.html\'"><\/ng-include>/g, '');
             var result = val.replace( '<ng-include src="\'views/templates/head.html\'"><\/ng-include>', '');
@@ -112,6 +120,14 @@ angular.module('emailingGeneratorApp')
         templateUrl:'/views/templates/newsletters/kit/kit-BE-fr.html',   
         link:function(scope,element,attrs,ctrl,transclude){
             element.find('textarea').html(transclude());
+
+             scope.getTextToCopyb = function() {
+                return element.val();
+            };
+
+            scope.infoCopyb = function () {
+                element.siblings('p').html('copié').delay(400).fadeOut();
+            }
         }
     };
   })
