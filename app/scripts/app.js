@@ -68,10 +68,6 @@ angular
     .state('generate', {
         url: 'generate',
         templateUrl: 'views/generate.html'
-    })
-    .state('render', {
-        url: 'render',
-        templateUrl: 'views/render.html'
     });
 
     var mainCountries = ['BE-fr','DE-de','ES-es','FR-fr','IT-it'],

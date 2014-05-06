@@ -20,4 +20,12 @@ angular.module('emailingGeneratorApp')
     texts.on('value', function(snap) {
       $scope.getStrapline = snap.val();
     });
-  });
+  })
+  .directive('editStrapline', [function () {
+    return function (scope, element, attrs){
+      element.click(function(){
+        element.focus();
+        console.log(element);
+      });
+    };
+  }]);

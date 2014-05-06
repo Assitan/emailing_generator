@@ -12,7 +12,6 @@ angular.module('emailingGeneratorApp')
    //ANNÉE FOOTER
     $scope.year = new Date();
 
-
     //AJOUT DES TRACKINGS DS LA BDD 
     //TODO : mettre dans un factory
     var fb_url = new Firebase('https://emailing-generator.firebaseio.com'),
@@ -113,6 +112,17 @@ angular.module('emailingGeneratorApp')
             //console.log(result);
         }
     };
+
+    $scope.url = 'templates.json';
+	    $scope.content = [];
+
+	    $scope.fetchContent = function() {
+	        $http.get($scope.url).then(function(result){
+	            $scope.content = result.data;
+	        });
+	    }
+
+	    $scope.fetchContent();
   })
    .directive('mdmRenderbe', function() {
     return{    
@@ -131,8 +141,7 @@ angular.module('emailingGeneratorApp')
         }
     };
   })
-   .directive('mdmRender', function() {
-
+   .directive('mdmRender', function($compile) {
      var frTemplate = 'kit-FR-fr.html';
      var beTemplate = 'kit-BE-fr.html';
 
@@ -152,58 +161,35 @@ angular.module('emailingGeneratorApp')
     }
 
     var linker = function(scope, element, attrs,transclude) {
-        //scope.rootDirectory = '/views/templates/newsletters/kit/' + template;
-        element.find('textarea').html(transclude());
+        scope.rootDirectory = '/views/templates/newsletters/kit/';
+
+        //element.html(getTemplate(scope.content.content_type)).show();
+
+        //$compile(element.contents())(scope);
+
+        angular.forEach(element, function(){
+	       //this.push(key + ': ' + value);
+	       if(element === element.find('textarea'))
+	       	 element.find('textarea').html(transclude());
+	     });
+
+       
     }
 
     return {
         transclude: true,
-        templateUrl: '/views/templates/newsletters/kit/' + template,
+        //templateUrl: '/views/templates/newsletters/kit/' + template,
+        replace: true,
+        scope: {
+            content:'='
+        },
         link: linker
     };
  })
-
-//    directive('mdmRender', function ($compile) {
-
-//     var frTemplate = '<div class="entry-photo"><h2>&nbsp;</h2><div class="entry-img"><span><a href="{{rootDirectory}}{{content.data}}"><img ng-src="{{rootDirectory}}{{content.data}}" alt="entry photo"></a></span></div><div class="entry-text"><div class="entry-title">{{content.title}}</div><div class="entry-copy">{{content.description}}</div></div></div>';
-//     var deTemplate = '<div class="entry-photo"><h2>&nbsp;</h2><div class="entry-img"><span><a href="{{rootDirectory}}{{content.data}}"><img ng-src="{{rootDirectory}}{{content.data}}" alt="entry photo"></a></span></div><div class="entry-text"><div class="entry-title">{{content.title}}</div><div class="entry-copy">{{content.description}}</div></div></div>';
-//     var esTemplate = '<div class="entry-photo"><h2>&nbsp;</h2><div class="entry-img"><span><a href="{{rootDirectory}}{{content.data}}"><img ng-src="{{rootDirectory}}{{content.data}}" alt="entry photo"></a></span></div><div class="entry-text"><div class="entry-title">{{content.title}}</div><div class="entry-copy">{{content.description}}</div></div></div>';
-
-//     var getTemplate = function(contentType) {
-//         var template = '';
-
-//         switch(contentType) {
-//             case 'fr':
-//                 template = frTemplate;
-//                 break;
-//             case 'de':
-//                 template = deTemplate;
-//                 break;
-//             case 'es':
-//                 template = esTemplate;
-//                 break;
-//         }
-
-//         return template;
-//     }
-
-//     var linker = function(scope, element, attrs) {
-//         scope.rootDirectory = '/views/templates/newsletters/kit/';
-
-//         element.find('textarea').html(transclude());
-//     }
-
-//     return {
-//         restrict: "AE",
-//         rep1ace: true,
-//         link: linker,
-       
-//     };
-// })
     .directive('hideJumbo', [function () {
         return function (scope, element, attrs) {
             element.click(function(){
-                element.parent().next('.jumbotron').hide();
+                element.parent().next('.jumbotron').fadeOut();
             })
         };
     }])
