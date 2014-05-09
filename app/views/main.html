@@ -34,6 +34,12 @@
             </li>
         </ul>     
     </nav>
+	
+	<div id="render" contenteditable>
+		<button type="button" class="btn btn-primary btn-xs" clip-copy="getTextToCopyb()" clip-click="infoCopyb()">copier</button>
+		<textarea class="container newsletter" cols="10" rows="5" ui-view ng-controller="EmailingCtrl" mdm-render></textarea>
+	</div>
+    
     
     <div id="settings" class="col-sm-2">
         <ul id="menu_colorpick" class="nav">
@@ -60,7 +66,7 @@
                             <input class="colorpicker_input" ng-model="$parent.setColor.border.colour" type="text">
                             <button ng-model="$parent.setColor.border.colour" type="submit" class="btn btn-primary btn-xs ok_btn" ng-click="setGeneralColor()">OK</button> 
                         </div>
-                    </li>                 
+                    </li>             
                 </ul>
             </li>
 
@@ -74,7 +80,7 @@
             </li>
 
             <li><h4>Render</h4>
-                <button class="btn btn-primary btn-xs">
+            	<button id="btn-render" class="btn btn-primary btn-xs">
                 	<a href="mail-render/index.html" target="_blank">HTMLail</a>
                 </button>
             </li> 
@@ -103,4 +109,4 @@
         </div>
     </div> -->
     
-    <div class="container newsletter" ui-view ng-model="newsletter" ng-controller="EmailingCtrl"></div>
+    <div class="container newsletter" ui-view ng-controller="EmailingCtrl"></div>

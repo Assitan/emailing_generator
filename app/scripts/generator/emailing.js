@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('emailingGeneratorApp')
-  .run(function(editableOptions) {
+ /* .run(function(editableOptions) {
     editableOptions.theme = 'bs3';
-  })
+  })*/
   .controller('EmailingCtrl', function ($scope){
     $scope.edit = {
       strapline: ''
@@ -14,7 +14,8 @@ angular.module('emailingGeneratorApp')
 
     //TEXTES
     $scope.addStrapline = function() {
-      texts.update($scope.edit);
+      console.log($scope.strapline_edit);
+      //texts.update($scope.edit.strapline);
     };
 
     texts.on('value', function(snap) {
@@ -23,9 +24,9 @@ angular.module('emailingGeneratorApp')
   })
   .directive('editStrapline', [function () {
     return function (scope, element, attrs){
-      element.click(function(){
-        element.focus();
         console.log(element);
-      });
+        scope.strapline_edit = element;
+        return scope.strapline_edit;
+     
     };
   }]);

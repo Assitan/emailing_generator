@@ -79,6 +79,7 @@ angular.module('emailingGeneratorApp')
       $scope.getColor = snap.val();
     });
 
+
   })
   .directive('mdmAddactiveclass', function() {
       return function (scope, element, attrs) {
@@ -90,107 +91,28 @@ angular.module('emailingGeneratorApp')
       };
     })
    //get new code html of newsletter
-   .directive('mdmRenderfr', function() {
-    return{    
-        transclude:true,
-        templateUrl:'/views/templates/newsletters/kit/kit-FR-fr.html',   
-        link:function(scope,element,attrs,ctrl,transclude){
-            element.find('textarea').html(transclude());
-            
-            scope.getTextToCopy = function() {
-                return element.val();
-            };
+   .directive('mdmRender', [function () {
+    	return function (scope, element, attrs){
+    		element.children().unwrap('<span class="ng-scope ng-binding"></span>');
 
-            scope.infoCopy = function () {
-                element.siblings('p').html('copié').delay(400).fadeOut();
-            }
-
-            var val = element.val();
-            // var result = val.replace( /<ng-include src="\'views\/templates\/[a-z]\.html\'"><\/ng-include>/g, '');
-            var result = val.replace( '<ng-include src="\'views/templates/head.html\'"><\/ng-include>', '');
-            var result = result.replace( '<ng-include src="\'views/templates/scripts.html\'"><\/ng-include>', '');
-            //console.log(result);
-        }
-    };
-
-    $scope.url = 'templates.json';
-	    $scope.content = [];
-
-	    $scope.fetchContent = function() {
-	        $http.get($scope.url).then(function(result){
-	            $scope.content = result.data;
-	        });
-	    }
-
-	    $scope.fetchContent();
-  })
-   .directive('mdmRenderbe', function() {
-    return{    
-        transclude:true,
-        templateUrl:'/views/templates/newsletters/kit/kit-BE-fr.html',   
-        link:function(scope,element,attrs,ctrl,transclude){
-            element.find('textarea').html(transclude());
-
-             scope.getTextToCopyb = function() {
+    		scope.getTextToCopyb = function() {
                 return element.val();
             };
 
             scope.infoCopyb = function () {
-                element.siblings('p').html('copié').delay(400).fadeOut();
-            }
-        }
-    };
-  })
-   .directive('mdmRender', function($compile) {
-     var frTemplate = 'kit-FR-fr.html';
-     var beTemplate = 'kit-BE-fr.html';
+                //element.siblings('p').html('copié').delay(400).fadeOut();
+            };
 
-     var getTemplate = function(contentType) {
-        var template = '';
-
-        switch(contentType) {
-            case 'fr':
-                template = frTemplate;
-                break;
-            case 'be':
-                template = beTemplate;
-                break;
-        }
-
-        return template;
-    }
-
-    var linker = function(scope, element, attrs,transclude) {
-        scope.rootDirectory = '/views/templates/newsletters/kit/';
-
-        //element.html(getTemplate(scope.content.content_type)).show();
-
-        //$compile(element.contents())(scope);
-
-        angular.forEach(element, function(){
-	       //this.push(key + ': ' + value);
-	       if(element === element.find('textarea'))
-	       	 element.find('textarea').html(transclude());
-	     });
-
-       
-    }
-
-    return {
-        transclude: true,
-        //templateUrl: '/views/templates/newsletters/kit/' + template,
-        replace: true,
-        scope: {
-            content:'='
-        },
-        link: linker
-    };
- })
+            var val = element.val();
+            var result = val.replace( '<ng-include src="\'views/templates/scripts.html\'"><\/ng-include>', '');
+            //console.log(result);
+    	};
+    }])
     .directive('hideJumbo', [function () {
         return function (scope, element, attrs) {
             element.click(function(){
                 element.parent().next('.jumbotron').fadeOut();
-            })
+            });
         };
     }])
    .directive('mdmDraggable', ['$document', function($document) {
