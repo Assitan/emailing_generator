@@ -6,7 +6,7 @@ angular.module('emailingGeneratorApp')
   })
   .controller('EmailingCtrl', function ($scope,$timeout){
 
-     var fb_url = 'https://emailing-generator.firebaseio.com',
+     var fb_url = 'https://generator-newsletters.firebaseio.com',
         texts = new Firebase(fb_url + '/texts');
 
     $scope.edit = {

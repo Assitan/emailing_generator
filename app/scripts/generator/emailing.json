@@ -1,25 +1,29 @@
 {
   "generalColors" : {
     "text" : {
-      "colour" : "#cf8484"
+      "colour" : ""
     },
     "border" : {
-      "colour" : "#c76f6f"
+      "colour" : ""
     },
     "background" : {
-      "colour" : "#e3d1d1"
+      "colour" : ""
     }
   },
+  "texts" : {
+    "strapline_nl" : "strapline",
+    "strapline_it" : "strapline",
+    "strapline_en" : "strapline",
+    "strapline_fr" : "strapline",
+    "strapline_es" : "strapline",
+    "strapline_de" : "strapline"
+  },
   "trackings" : {
+    "LU_fr" : {
+      "begin" : "",
+      "end" : ""
+    },
     "FR_fr" : {
-      "begin" : "",
-      "end" : ""
-    },
-    "ES_es" : {
-      "begin" : "",
-      "end" : ""
-    },
-    "UK_en" : {
       "begin" : "",
       "end" : ""
     },
@@ -27,15 +31,7 @@
       "begin" : "",
       "end" : ""
     },
-    "NL_nl" : {
-      "begin" : "",
-      "end" : ""
-    },
-    "BE_fr" : {
-      "begin" : "",
-      "end" : ""
-    },
-    "BE_nl" : {
+    "UK_en" : {
       "begin" : "",
       "end" : ""
     },
@@ -43,17 +39,29 @@
       "begin" : "",
       "end" : ""
     },
+    "NL_nl" : {
+      "begin" : "",
+      "end" : ""
+    },
+    "ES_es" : {
+      "begin" : "",
+      "end" : ""
+    },
     "CH_it" : {
       "begin" : "",
       "end" : ""
     },
-    "LU_fr" : {
+    "BE_nl" : {
+      "begin" : "",
+      "end" : ""
+    },
+    "BE_fr" : {
       "begin" : "",
       "end" : ""
     },
     "AT_de" : {
       "begin" : "",
       "end" : ""
-    }   
+    }
   }
 }

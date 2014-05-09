@@ -14,7 +14,7 @@ angular.module('emailingGeneratorApp')
 
     //AJOUT DES TRACKINGS DS LA BDD 
     //TODO : mettre dans un factory
-    var fb_url = new Firebase('https://emailing-generator.firebaseio.com'),
+    var fb_url = new Firebase('https://generator-newsletters.firebaseio.com'),
         trackings = new Firebase(fb_url + '/trackings'),
         trackings_FR_fr = new Firebase(trackings + '/FR_fr'),
         trackings_ES_es = new Firebase(trackings + '/ES_es'),
