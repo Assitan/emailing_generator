@@ -93,7 +93,6 @@ angular.module('emailingGeneratorApp')
    .directive('mdmRender', [function () {
     	return function (scope, element, attrs){
     		element.children().unwrap('<span class="ng-scope ng-binding"></span>');
-            element.find('ng-include').remove();
     	};
     }])
    .directive('mdmResult', [function () {

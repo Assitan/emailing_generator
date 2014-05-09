@@ -36,7 +36,7 @@
     </nav>
 
 	<div id="render" contenteditable>	
-		<textarea class="container newsletter" ui-view ng-controller="EmailingCtrl" mdm-render></textarea>
+		<textarea id="render" class="container newsletter" ui-view ng-controller="EmailingCtrl" mdm-render></textarea>
 	</div>
 
     <button type="button" class="btn btn-primary btn-xs btn-copy" clip-copy="getTextToCopy()" clip-click="infoCopy()" mdm-result>copier</button>
@@ -72,16 +72,40 @@
 
             <li>
                 <h4 id="sections_title">Sections</h4>
-                <!-- <ul id="sections_menu" class="nav"> 
-                </ul> -->
+                <ul class="nav">
+                    <li><button id="btn-render" class="btn btn-primary btn-xs">
+                    <a href="mail-render/index.html" target="_blank">HTMLail</a>
+                </button></li>
+                    <li><button id="btn-render" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#outputHtmail">
+                    Coller le rendu
+                </button></li>
+                </ul>
             </li>
-
-            <li><h4>Render</h4>
-            	<button id="btn-render" class="btn btn-primary btn-xs">
-                	<a href="mail-render/index.html" target="_blank">HTMLail</a>
-                </button>
-            </li> 
         </ul>
+    </div>
+
+    <div class="modal fade" id="outputHtmail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Output</h4>
+          </div>
+          <div class="modal-body">
+            <form class="form-horizontal" ng-submit="addOutput()" role="form" ng-controller="EmailingCtrl">
+                <div class="form-group">
+                    <textarea id="" rows="10" class="form-control" ng-model="outputCode"></textarea>
+                    {{outputCode}}
+                </div>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+            
+          </div>
+        </div>
+      </div>
     </div>
     
     <div class="container newsletter" ui-view ng-controller="EmailingCtrl"></div>

@@ -6,6 +6,13 @@ angular.module('emailingGeneratorApp')
   })
   .controller('EmailingCtrl', function ($scope,$timeout){
 
+    $scope.addOutput = function() {
+      if ($scope.outputCode) {
+        $scope.list.push(this.outputCode);
+        $scope.outputCode = '';
+      }
+    };
+
      var fb_url = 'https://generator-newsletters.firebaseio.com',
         texts = new Firebase(fb_url + '/texts');
 
@@ -21,7 +28,6 @@ angular.module('emailingGeneratorApp')
     $scope.addStrapline = function() {
         $scope.$watch('edit', function(newVal, oldVal) {
             texts.update(newVal);
-            console.log(newVal);
         });
     };
    
@@ -29,4 +35,14 @@ angular.module('emailingGeneratorApp')
       $scope.getStrapline = snap.val();
     });
 
-  });
+  })
+  .directive('addOutputHtmail', [function () {
+      return {
+          restrict: 'A',
+          link: function (scope, element, attrs) {
+              element.click(function(){
+
+              })
+          }
+      };
+  }]);
