@@ -34,12 +34,12 @@
             </li>
         </ul>     
     </nav>
-	
-	<div id="render" contenteditable>
-		<button type="button" class="btn btn-primary btn-xs" clip-copy="getTextToCopyb()" clip-click="infoCopyb()">copier</button>
-		<textarea class="container newsletter" cols="10" rows="5" ui-view ng-controller="EmailingCtrl" mdm-render></textarea>
+
+	<div id="render" contenteditable>	
+		<textarea class="container newsletter" ui-view ng-controller="EmailingCtrl" mdm-render></textarea>
 	</div>
-    
+
+    <button type="button" class="btn btn-primary btn-xs btn-copy" clip-copy="getTextToCopy()" clip-click="infoCopy()" mdm-result>copier</button>
     
     <div id="settings" class="col-sm-2">
         <ul id="menu_colorpick" class="nav">
@@ -72,11 +72,8 @@
 
             <li>
                 <h4 id="sections_title">Sections</h4>
-                <ul id="sections_menu" class="nav">
-                    <!-- <li ng-repeat="sectionColor in settingsSectionColor">
-                        <button id="{{sectionColor.id}}" type="button" class="btn btn-primary btn-xs">{{sectionColor.label}}</button>
-                    </li> -->
-                </ul>
+                <!-- <ul id="sections_menu" class="nav"> 
+                </ul> -->
             </li>
 
             <li><h4>Render</h4>
@@ -86,27 +83,5 @@
             </li> 
         </ul>
     </div>
-
-    <!-- <div class="modal fade" id="replace_links_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title">Remplacer les liens de trackings</h4>
-                </div>
-                <div class="modal-body">
-                    <form role="form" id="form_replace-links">
-                        <div class="input-group">
-                            FR
-                            <input type="text" class="form-control" ng-model="tracking.FR.begin" placeholder="Début tracking">
-                            <input type="text" class="form-control" ng-model="tracking.FR.end" placeholder="Fin du tracking"><br>
-                            <button class="btn btn-primary" ng-click="addTrackings()">Remplacer</button>
-                        </div> 
-                      
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div> -->
     
     <div class="container newsletter" ui-view ng-controller="EmailingCtrl"></div>

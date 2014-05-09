@@ -90,8 +90,13 @@ body {
     border: 1px solid #ccc;
 
     textarea{
-        width: 200px;
+        height: 173px;
+        width: 210px;
         border: 0;
+
+        &:focus{
+            outline: none;
+        }
     }
 
     &:active,&:focus{
@@ -189,17 +194,17 @@ body {
 .newsletter{
    
     .section{
-   	
-    	td{position: relative;
-    		&:hover{
-    			border: 1px dotted;
-    		}
+    
+        td{position: relative;
+            &:hover{
+                border: 1px dotted;
+            }
 
-    		.croix{
-		    	position: absolute;
-		    	right: 0;
-		    }
-    	}
+            .croix{
+                position: absolute;
+                right: 0;
+            }
+        }
     }
 
     #options_sections{
@@ -209,38 +214,21 @@ body {
 
 }
 
-.colpick_hex{
-    z-index: 200;
+.btn-copy,.copy-infos{
+    clear: both;
+    float: left;
+    margin: 10px 0 0 10px;
 }
 
-/* 
- * Page generate
- */
+.generate_zone{
+    width: 100%;
+    height: 500px;
+    outline: none;
+    resize:none;
+}
 
-#generate{
-    margin-top: 30px;
-
-    #generate_container{
-        .generate_content{
-            li{
-                float: left;
-                margin: 0 10px;
-                
-                button{
-                    //display: none;
-                    position: absolute;
-                    top: 0;
-                    right: 0;
-                    margin-top: 35px;
-                }
-
-                &:hover button{
-                    display: block;
-                }
-            }
-        }
-    }
-   
+.colpick_hex{
+    z-index: 200;
 }
 
 /* 
@@ -252,30 +240,21 @@ body {
   -khtml-user-select: none;
   -webkit-user-select: none;
   user-select: none;
-  /* Required to make elements draggable in old WebKit */
   -khtml-user-drag: element;
   -webkit-user-drag: element;
 }
 
 
-/* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
     .container {
         max-width: 730px;
     }
-
-    /* Remove the padding we set earlier */
     .header,
     .marketing,
     .footer {
         padding-left: 0;
         padding-right: 0;
     }
-    /* Space out the masthead */
-    .header {
-        margin-bottom: 30px;
-    }
-    /* Remove the bottom border on the jumbotron for visual effect */
     .jumbotron {
         border-bottom: 0;
     }

@@ -3,9 +3,9 @@
     <span id="body_style" style="display:block;background-color:{{getColor.background.colour}};">
       <table cellpadding="0" cellspacing="0" border="0" width="600" align="center">
         <tr>
-          <td align="center" width="100%" style="padding:15px 0 20px 0;font-family:Arial, Helvetica, sans-serif;font-size:11px;color:#808285;">
-            [SUBTITLE]
-            <br>To be sure to receive all our emails, <a style="color:#808285; text-decoration:underline;" href="ApprovedSender" dataminingname="newsletter@news.maisonsdumonde.com " tracking="Enabled" guid="003XQ4I" linktype="System">newsletter@news.maisonsdumonde.com</a> to your address book !<br>If this message does not display correctly, <a style="color:#808285; text-decoration:underline;" href="MirrorPage" dataminingname="see" tracking="Enabled" guid="003XQ4J" linktype="System">see</a> the newsletter in a browser. 
+          <td align="center" width="100%" style="padding:15px 0 20px 0;font-family:Arial, Helvetica, sans-serif;font-size:11px;color:{{getColor.text.colour}};">
+            <span style="color:{{getColor.text.colour}};" editable-text="edit.strapline_en" onaftersave="addStrapline()" ng-model="getStrapline.strapline_en">{{getStrapline.strapline_en}}</span>
+            <br>To be sure to receive all our emails, <a style="color:{{getColor.text.colour}}; text-decoration:underline;" href="ApprovedSender" dataminingname="newsletter@news.maisonsdumonde.com " tracking="Enabled" guid="003XQ4I" linktype="System">newsletter@news.maisonsdumonde.com</a> to your address book !<br>If this message does not display correctly, <a style="color:{{getColor.text.colour}}; text-decoration:underline;" href="MirrorPage" dataminingname="see" tracking="Enabled" guid="003XQ4J" linktype="System">see</a> the newsletter in a browser. 
           </td>
         </tr>
         <tr>

@@ -79,14 +79,13 @@ angular.module('emailingGeneratorApp')
       $scope.getColor = snap.val();
     });
 
-
   })
   .directive('mdmAddactiveclass', function() {
       return function (scope, element, attrs) {
         element.siblings(':first-child').addClass('active');
         element.click(function(){
             element.siblings().removeClass('active');
-            $(this).addClass('active');     
+            $(this).addClass('active');
         });
       };
     })
@@ -94,20 +93,26 @@ angular.module('emailingGeneratorApp')
    .directive('mdmRender', [function () {
     	return function (scope, element, attrs){
     		element.children().unwrap('<span class="ng-scope ng-binding"></span>');
-
-    		scope.getTextToCopyb = function() {
-                return element.val();
-            };
-
-            scope.infoCopyb = function () {
-                //element.siblings('p').html('copié').delay(400).fadeOut();
-            };
-
-            var val = element.val();
-            var result = val.replace( '<ng-include src="\'views/templates/scripts.html\'"><\/ng-include>', '');
-            //console.log(result);
+            element.find('ng-include').remove();
     	};
     }])
+   .directive('mdmResult', [function () {
+        
+        return function (scope, element, attrs){
+
+            scope.getTextToCopy = function() {
+                return element.siblings('#render').children('span').html();
+            };
+
+            scope.infoCopy = function () {
+                element.after('<p class="copy-infos">copié</p>');
+                element.siblings('p').delay(400).fadeOut();
+                // var val = element.siblings('#render').children('span').html();
+                // var result = val.replace( '<ng-include src="\'views/templates/scripts.html\'"><\/ng-include>', '');
+                // console.log(result);
+            };     
+       };
+   }])
     .directive('hideJumbo', [function () {
         return function (scope, element, attrs) {
             element.click(function(){

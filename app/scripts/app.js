@@ -67,7 +67,7 @@ angular
     })
     .state('generate', {
         url: 'generate',
-        templateUrl: 'views/generate.html'
+        templateUrl: 'views/generate.html',
     });
 
     var mainCountries = ['BE-fr','DE-de','ES-es','FR-fr','IT-it'],
