@@ -2,7 +2,7 @@
 
 angular.module('emailingGeneratorApp')
     
-  .controller('MainCtrl', function ($scope, $rootScope, $http, $firebase) {
+  .controller('MainCtrl', function ($scope, $rootScope, $http, $firebase, Trackings) {
 
      // NAVIGATION
     $scope.main_countries = ['FR-fr','BE-fr','DE-de','ES-es','IT-it'];
@@ -79,7 +79,24 @@ angular.module('emailingGeneratorApp')
       $scope.getColor = snap.val();
     });
 
+    $scope.getFile = function(){
+        var file = new FileReader();
+        var loadingResult = document.querySelector('#templatefile').files[0];
+        console.log(loadingResult).html();
+    }
+  
+
   })
+    .factory('Trackings', function($http) {
+
+        return {
+            // get all the comments
+            get : function() {
+                return $http.get('/Users/a-kone/Downloads/mailrox-export-zip-for-server.zip');
+            }
+        }
+
+    })
   .directive('mdmAddactiveclass', function() {
       return function (scope, element, attrs) {
         element.siblings(':first-child').addClass('active');
@@ -106,10 +123,17 @@ angular.module('emailingGeneratorApp')
             scope.infoCopy = function () {
                 element.after('<p class="copy-infos">copié</p>');
                 element.siblings('p').delay(400).fadeOut();
-                // var val = element.siblings('#render').children('span').html();
-                // var result = val.replace( '<ng-include src="\'views/templates/scripts.html\'"><\/ng-include>', '');
-                // console.log(result);
             };     
+       };
+   }])
+   .directive('removeCode', [function () {
+       return function (scope, element, attrs){            
+            element.click(function(){
+                var el = element.siblings('.generate_zone').val();
+                var result = el.replace(/<ng-include src="\'views\/templates\/scripts\.html\'"><\/ng-include>/g, "");
+                console.log(result);
+                element.siblings('.generate_zone').html("").html(result);
+            });
        };
    }])
    .directive('mdmDraggable', ['$document', function($document) {

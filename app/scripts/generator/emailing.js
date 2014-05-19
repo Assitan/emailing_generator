@@ -16,13 +16,15 @@ angular.module('emailingGeneratorApp')
      var fb_url = 'https://generator-newsletters.firebaseio.com',
         texts = new Firebase(fb_url + '/texts');
 
+    var surtitre = 'surtitre'
+
     $scope.edit = {
-        strapline_fr:'surtitre',
-        strapline_de:'surtitre',
-        strapline_es:'surtitre',
-        strapline_en:'surtitre',
-        strapline_it:'surtitre',
-        strapline_nl:'surtitre'
+        strapline_fr: surtitre,
+        strapline_de: surtitre,
+        strapline_es: surtitre,
+        strapline_en: surtitre,
+        strapline_it: surtitre,
+        strapline_nl: surtitre
     };
 
     $scope.addStrapline = function() {

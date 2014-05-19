@@ -23,7 +23,7 @@ angular
     })
     .state('cut', {
         url: 'cut',
-        templateUrl: ''
+        templateUrl: 'views/cut.html'
     })
     .state('generate', {
         url: 'generate',
