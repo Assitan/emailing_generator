@@ -19,7 +19,11 @@ angular
 
     $stateProvider.state('main', {
         url: 'main',
-        templateUrl: 'views/main.html'
+        templateUrl: 'index.html'
+    })
+    .state('cut', {
+        url: 'cut',
+        templateUrl: ''
     })
     .state('generate', {
         url: 'generate',
@@ -39,32 +43,31 @@ angular
     for (var j = 0; j < allCountries.length; j++) {
         state_news(allCountries[j]);
         state_news700(allCountries[j]);
-
     };
 
     function state_kit(country){
-        $stateProvider.state('main.kit_' + country, {
+        $stateProvider.state('kit_' + country, {
             url: '/kit/' + country,
             templateUrl: 'views/templates/newsletters/kit/kit-' + country + '.html'
         });
     };
 
     function state_kit700(country){
-        $stateProvider.state('main.kit700_' + country, {
+        $stateProvider.state('kit700_' + country, {
             url: '/kit700/' + country,
             templateUrl: 'views/templates/newsletters/kit700/kit700-' + country + '.html'
         });
     };
 
     function state_news(country){
-        $stateProvider.state('main.news_' + country, {
+        $stateProvider.state('news_' + country, {
             url: '/news/' + country,
             templateUrl: 'views/templates/newsletters/news/news-' + country + '.html'
         });
     };
 
     function state_news700(country){
-        $stateProvider.state('main.news700_'+ country, {
+        $stateProvider.state('news700_'+ country, {
             url: '/news700/' + country,
             templateUrl: 'views/templates/newsletters/news700/news700-' + country + '.html'
         });

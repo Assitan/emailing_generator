@@ -17,12 +17,12 @@ angular.module('emailingGeneratorApp')
         texts = new Firebase(fb_url + '/texts');
 
     $scope.edit = {
-        strapline_fr:'strapline',
-        strapline_de:'strapline',
-        strapline_es:'strapline',
-        strapline_en:'strapline',
-        strapline_it:'strapline',
-        strapline_nl:'strapline'
+        strapline_fr:'surtitre',
+        strapline_de:'surtitre',
+        strapline_es:'surtitre',
+        strapline_en:'surtitre',
+        strapline_it:'surtitre',
+        strapline_nl:'surtitre'
     };
 
     $scope.addStrapline = function() {

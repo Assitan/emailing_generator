@@ -112,13 +112,6 @@ angular.module('emailingGeneratorApp')
             };     
        };
    }])
-    .directive('hideJumbo', [function () {
-        return function (scope, element, attrs) {
-            element.click(function(){
-                element.parent().next('.jumbotron').fadeOut();
-            });
-        };
-    }])
    .directive('mdmDraggable', ['$document', function($document) {
     return function (scope, element, attr) {
       var startX = 0, startY = 0, x = 0, y = 0;
