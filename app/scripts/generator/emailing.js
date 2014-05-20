@@ -4,17 +4,9 @@ angular.module('emailingGeneratorApp')
   .run(function(editableOptions) {
     editableOptions.theme = 'bs3';
   })
-  .controller('EmailingCtrl', function ($scope,$timeout){
+  .controller('EmailingCtrl', function ($scope,$timeout,FBURL){
 
-    // $scope.addOutput = function() {
-    //   if ($scope.outputCode) {
-    //     $scope.list.push(this.outputCode);
-    //     $scope.outputCode = '';
-    //   }
-    // };
-
-     var fb_url = 'https://generator-newsletters.firebaseio.com',
-        texts = new Firebase(fb_url + '/texts');
+    var texts = new Firebase(FBURL + '/texts');
 
     var surtitre = 'surtitre'
 
@@ -37,14 +29,4 @@ angular.module('emailingGeneratorApp')
       $scope.getStrapline = snap.val();
     });
 
-  })
-  .directive('addOutputHtmail', [function () {
-      return {
-          restrict: 'A',
-          link: function (scope, element, attrs) {
-              element.click(function(){
-
-              })
-          }
-      };
-  }]);
+  });

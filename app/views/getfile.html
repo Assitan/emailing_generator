@@ -1,26 +1,4 @@
-<div ng-controller="MainCtrl">
+<div id="getFile">
     <input model="fileinput" class="btn btn-primary btn-xs" type="file" id="fileinput" multiple>
     <textarea id="targetFile" class="generate_zone"></textarea>
 </div>
-
- <!--<script type="text/javascript">
-  function readFile(evt) {
-
-    var f = evt.target.files[0]; 
-    var t = document.getElementById('targetFile');
-
-    if (f) {
-      var r = new FileReader();
-      r.onload = function(e) { 
-          var contents = e.target.result;
-        //alert( contents);  
-        t.value = contents;
-      }
-      r.readAsText(f);
-    } else { 
-      alert("fichier non chargé");
-    }
-  }
-
-  document.getElementById('fileinput').addEventListener('change', readFile, false);
-</script>-->

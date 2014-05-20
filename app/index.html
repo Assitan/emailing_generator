@@ -59,10 +59,13 @@
     </nav>
 
     <div id="render" contenteditable>   
-        <textarea class="container newsletter" ui-view ng-controller="EmailingCtrl" mdm-render></textarea>
+        <textarea id="render_zone" class="container newsletter" ui-view ng-controller="EmailingCtrl" mdm-render></textarea>
     </div>
-
-    <button type="button" class="btn btn-primary btn-xs btn-copy" clip-copy="getTextToCopy()" clip-click="infoCopy()" mdm-result>copier</button>
+    
+    <div id="settingsOutput">
+        <button type="button" class="btn btn-primary btn-xs" remove-code>enlever</button>
+        <button type="button" class="btn btn-primary btn-xs btn-copy" clip-copy="getTextToCopy()" clip-click="infoCopy()" mdm-result>copier</button>
+    </div>
     
     <div id="settings" class="col-sm-2">
         <ul id="menu_colorpick" class="nav">

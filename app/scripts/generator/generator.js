@@ -2,7 +2,7 @@
 
 angular.module('emailingGeneratorApp')
     
-  .controller('MainCtrl', function ($scope, $rootScope, $http, $firebase, FBURL) {
+  .controller('MainCtrl', function ($scope, $http, $firebase, FBURL) {
 
      // NAVIGATION
     $scope.main_countries = [
@@ -118,24 +118,30 @@ angular.module('emailingGeneratorApp')
       $scope.getColor = snap.val();
     });
 
+    // handleColors.setListToScope($scope, 'background');
+    //   $scope.setColor = {};
+
+    //   $scope.addNewItem = function() {
+    //     itemService.addItem($scope.setColor);
+    //     $scope.newItem = {};
+    //   };
+
   })
-    // .factory('FireRef', ['$rootScope', 'FBURL', 'Firebase', '$firebase', function ($rootScope, FBURL, Firebase, $firebase) {
-    //     var trackingsLang = new Firebase(FBURL + '/trackings/');
-    //     var langRef = trackingsLang.push();
+    // .factory('handleColors', ['FBURL', 'Firebase', '$firebase','angularFire', function (FBURL, Firebase, $firebase, angularFire) {
+    //     var generalColors = new Firebase(FBURL + '/generalColors');
+    //     //var langRef = trackingsLang.push();
 
-    //     trackingsLang.on('value', function(snap) {
-    //       $scope.getTrackingsLang = snap.val();
-    //       console.log($scope.getTrackingsLang);
-    //     });
-
-    //     var getOnlineUserCount = function() {
-    //       return onlineUsers;
-    //     }
+    //     // trackingsLang.on('value', function(snap) {
+    //     //   $scope.getTrackingsLang = snap.val();
+    //     //   console.log($scope.getTrackingsLang);
+    //     // });
 
     //     return {
-    //         wishlists: function (userId) {
-    //             userId = userId || $rootScope.auth.user.id;
-    //             return $firebase(new Firebase(FBURL + '/users/' + userId + '/wishlists'));
+    //         setListToScope: function(scope, localScopeVarName) {
+    //          angularFire(generalColors, scope, localScopeVarName);
+    //         },
+    //         addItem: function(item){
+    //             generalColors.push(item);
     //         }
     //     }
     // }])
@@ -154,14 +160,11 @@ angular.module('emailingGeneratorApp')
     		element.children().unwrap('<span class="ng-scope ng-binding"></span>');
     	};
     }])
-   .directive('mdmResult', [function () {
-        
+   .directive('mdmResult', [function () {        
         return function (scope, element, attrs){
-
             scope.getTextToCopy = function() {
                 return element.siblings('#render').children('span').html();
             };
-
             scope.infoCopy = function () {
                 element.after('<p class="copy-infos">copié</p>');
                 element.siblings('p').delay(400).fadeOut();
@@ -171,10 +174,12 @@ angular.module('emailingGeneratorApp')
    .directive('removeCode', [function () {
        return function (scope, element, attrs){            
             element.click(function(){
-                var el = element.siblings('.generate_zone').val();
-                var result = el.replace(/<ng-include src="\'views\/templates\/scripts\.html\'"><\/ng-include>/g, "");
-                console.log(result);
-                element.siblings('.generate_zone').html("").html(result);
+                var currentHtml = element.parent().siblings('#render').children().html();
+                //var result = currentHtml.replace(/<ng-include src="\'views\/templates\/scripts\.html\'"><\/ng-include>/g, "");
+                var result = currentHtml.replace(/&lt;ng-include src="\'views\/templates\/scripts\.html'" class="include"&gt\;&lt\;\/ng-include&gt\;/g, "");
+               
+                element.parent().parent().parent().find('.generate_zone').html('<td align="center" ng-model="outputCode">'+result+'</td>');
+              
             });
        };
    }])
