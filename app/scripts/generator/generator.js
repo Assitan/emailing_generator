@@ -38,7 +38,7 @@ angular.module('emailingGeneratorApp')
     var f = evt.target.files[0]; 
     var t = document.getElementById('targetFile');
 
-    if (f) {
+    if (f && f.type.match('text/html.*')) {
         var r = new FileReader();
         r.onload = function(e) { 
             var contents = e.target.result;
@@ -147,7 +147,6 @@ angular.module('emailingGeneratorApp')
     // }])
     .directive('mdmAddactiveclass', function() {
       return function (scope, element, attrs) {
-        element.siblings(':first-child').addClass('active');
         element.click(function(){
             element.siblings().removeClass('active');
             $(this).addClass('active');
@@ -176,10 +175,9 @@ angular.module('emailingGeneratorApp')
             element.click(function(){
                 var currentHtml = element.parent().siblings('#render').children().html();
                 //var result = currentHtml.replace(/<ng-include src="\'views\/templates\/scripts\.html\'"><\/ng-include>/g, "");
-                var result = currentHtml.replace(/&lt;ng-include src="\'views\/templates\/scripts\.html'" class="include"&gt\;&lt\;\/ng-include&gt\;/g, "");
+                var result = currentHtml.replace(/editable-text="edit\.strapline_./g, '');
                
-                element.parent().parent().parent().find('.mail').html(result);
-              
+                element.parent().parent().find('.base_code').append(result);
             });
        };
    }])
