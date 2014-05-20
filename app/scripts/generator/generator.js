@@ -178,7 +178,7 @@ angular.module('emailingGeneratorApp')
                 //var result = currentHtml.replace(/<ng-include src="\'views\/templates\/scripts\.html\'"><\/ng-include>/g, "");
                 var result = currentHtml.replace(/&lt;ng-include src="\'views\/templates\/scripts\.html'" class="include"&gt\;&lt\;\/ng-include&gt\;/g, "");
                
-                element.parent().parent().parent().find('.generate_zone').html('<td align="center" ng-model="outputCode">'+result+'</td>');
+                element.parent().parent().parent().find('.mail').html(result);
               
             });
        };
