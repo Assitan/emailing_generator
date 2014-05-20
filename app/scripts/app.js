@@ -11,8 +11,8 @@ angular
     'xeditable',
     'colorpicker.module',
     'ngClipboard'
-  ]
-)
+  ])
+  .constant('FBURL', 'https://generator-newsletters.firebaseio.com')
   .config(function ($stateProvider, $urlRouterProvider,$locationProvider) {
 
     $urlRouterProvider.otherwise('/');
@@ -21,9 +21,9 @@ angular
         url: 'main',
         templateUrl: 'index.html'
     })
-    .state('cut', {
-        url: 'cut',
-        templateUrl: 'views/cut.html'
+    .state('getfile', {
+        url: 'getfilet',
+        templateUrl: 'views/getfile.html'
     })
     .state('generate', {
         url: 'generate',

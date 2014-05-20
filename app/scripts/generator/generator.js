@@ -2,20 +2,59 @@
 
 angular.module('emailingGeneratorApp')
     
-  .controller('MainCtrl', function ($scope, $rootScope, $http, $firebase, Trackings) {
+  .controller('MainCtrl', function ($scope, $rootScope, $http, $firebase, FBURL) {
 
      // NAVIGATION
-    $scope.main_countries = ['FR-fr','BE-fr','DE-de','ES-es','IT-it'];
+    $scope.main_countries = [
+        'FR-fr',
+        'BE-fr',
+        'DE-de',
+        'ES-es',
+        'IT-it'
+    ];
 
-    $scope.all_countries = ['AT-de','BE-fr','BE-nl','CH-de','CH-fr','CH-it','DE-de','ES-es','FR-fr','IT-it','LU-fr','NL-nl','UK-en']; 
+    $scope.all_countries = [
+        'AT-de',
+        'BE-fr',
+        'BE-nl',
+        'CH-de',
+        'CH-fr',
+        'CH-it',
+        'DE-de',
+        'ES-es',
+        'FR-fr',
+        'IT-it',
+        'LU-fr',
+        'NL-nl',
+        'UK-en'
+    ]; 
 
    //ANNÉE FOOTER
     $scope.year = new Date();
 
+    //GET FILE
+    function readFile(evt) {
+
+    var f = evt.target.files[0]; 
+    var t = document.getElementById('targetFile');
+
+    if (f) {
+        var r = new FileReader();
+        r.onload = function(e) { 
+            var contents = e.target.result;
+            t.value = contents;
+        }
+            r.readAsText(f);
+        } else { 
+            alert("fichier non chargé");
+        }
+    }
+
+   $('#fileinput').on('change', readFile);
+
     //AJOUT DES TRACKINGS DS LA BDD 
     //TODO : mettre dans un factory
-    var fb_url = new Firebase('https://generator-newsletters.firebaseio.com'),
-        trackings = new Firebase(fb_url + '/trackings'),
+    var trackings = new Firebase(FBURL + '/trackings'),
         trackings_FR_fr = new Firebase(trackings + '/FR_fr'),
         trackings_ES_es = new Firebase(trackings + '/ES_es'),
         trackings_DE_de = new Firebase(trackings + '/DE_de'),
@@ -28,7 +67,7 @@ angular.module('emailingGeneratorApp')
         trackings_BE_nl = new Firebase(trackings + '/BE_nl'),
         trackings_LU_fr = new Firebase(trackings + '/LU_fr'),
         trackings_AT_de = new Firebase(trackings + '/AT_de'),
-        colors          = new Firebase(fb_url + '/generalColors');
+        colors          = new Firebase(FBURL  + '/generalColors');
 
     //TRACKINGS
      trackings_FR_fr.on('value', function(snap) {
@@ -79,25 +118,28 @@ angular.module('emailingGeneratorApp')
       $scope.getColor = snap.val();
     });
 
-    $scope.getFile = function(){
-        var file = new FileReader();
-        var loadingResult = document.querySelector('#templatefile').files[0];
-        console.log(loadingResult).html();
-    }
-  
-
   })
-    .factory('Trackings', function($http) {
+    // .factory('FireRef', ['$rootScope', 'FBURL', 'Firebase', '$firebase', function ($rootScope, FBURL, Firebase, $firebase) {
+    //     var trackingsLang = new Firebase(FBURL + '/trackings/');
+    //     var langRef = trackingsLang.push();
 
-        return {
-            // get all the comments
-            get : function() {
-                return $http.get('/Users/a-kone/Downloads/mailrox-export-zip-for-server.zip');
-            }
-        }
+    //     trackingsLang.on('value', function(snap) {
+    //       $scope.getTrackingsLang = snap.val();
+    //       console.log($scope.getTrackingsLang);
+    //     });
 
-    })
-  .directive('mdmAddactiveclass', function() {
+    //     var getOnlineUserCount = function() {
+    //       return onlineUsers;
+    //     }
+
+    //     return {
+    //         wishlists: function (userId) {
+    //             userId = userId || $rootScope.auth.user.id;
+    //             return $firebase(new Firebase(FBURL + '/users/' + userId + '/wishlists'));
+    //         }
+    //     }
+    // }])
+    .directive('mdmAddactiveclass', function() {
       return function (scope, element, attrs) {
         element.siblings(':first-child').addClass('active');
         element.click(function(){

@@ -6,12 +6,12 @@ angular.module('emailingGeneratorApp')
   })
   .controller('EmailingCtrl', function ($scope,$timeout){
 
-    $scope.addOutput = function() {
-      if ($scope.outputCode) {
-        $scope.list.push(this.outputCode);
-        $scope.outputCode = '';
-      }
-    };
+    // $scope.addOutput = function() {
+    //   if ($scope.outputCode) {
+    //     $scope.list.push(this.outputCode);
+    //     $scope.outputCode = '';
+    //   }
+    // };
 
      var fb_url = 'https://generator-newsletters.firebaseio.com',
         texts = new Firebase(fb_url + '/texts');

@@ -17,7 +17,7 @@
 
     <ul class="nav nav-tabs">
         <li mdm-addactiveclass><a ui-sref="main">Modifier</a></li>
-        <li mdm-addactiveclass><a ui-sref="cut">Découper</a></li>
+        <li mdm-addactiveclass><a ui-sref="getfile">Récupérer</a></li>
         <li mdm-addactiveclass><a ui-sref="generate">Générer</a></li>
     </ul>
     
@@ -59,7 +59,7 @@
     </nav>
 
     <div id="render" contenteditable>   
-        <textarea id="render" class="container newsletter" ui-view ng-controller="EmailingCtrl" mdm-render></textarea>
+        <textarea class="container newsletter" ui-view ng-controller="EmailingCtrl" mdm-render></textarea>
     </div>
 
     <button type="button" class="btn btn-primary btn-xs btn-copy" clip-copy="getTextToCopy()" clip-click="infoCopy()" mdm-result>copier</button>
@@ -96,9 +96,6 @@
             <li>
                 <h4 id="sections_title">Sections</h4>
                 <ul class="nav">
-                    <li><button id="btn-render" class="btn btn-primary btn-xs">
-                    <a href="mail-render/index.html" target="_blank">HTMLail</a>
-                </button></li>
                     <li><button id="btn-render" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#outputHtmail">
                     Coller le rendu
                 </button></li>
@@ -158,5 +155,6 @@
     <script src="scripts/app.js"></script>
     <script src="scripts/generator/generator.js"></script>
     <script src="scripts/generator/emailing.js"></script>
+   
 </body>
 </html>
