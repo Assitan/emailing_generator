@@ -31,22 +31,48 @@ angular.module('emailingGeneratorApp')
 
     $scope.btnCopy = false;
 
+    $scope.master = {};
+
+    $scope.update = function(file) {
+        $scope.master= angular.copy(file);
+    };
+
+    $scope.loadingCode = {
+        pasted: false,
+        copied: false,
+        cut: false
+      }
+      $scope.events = {
+        onCopy: function(event) {
+          $scope.loadingCode.copied = true;
+          //console.log(event);
+        },
+        onPaste: function(event) {
+          $scope.loadingCode.pasted = true;
+          //console.log(event);
+        },
+        onCut: function(event) {
+          $scope.loadingCode.cut = true;
+          //console.log(event);
+        }
+      };
+
    //ANNÉE FOOTER
     $scope.year = new Date();
 
     //GET FILE
     function readFile(evt) {
 
-        var f = evt.target.files[0]; 
-        var t = document.getElementById('targetFile');
+        var file = evt.target.files[0]; 
+        var targetFile = document.getElementById('targetFile');
 
-        if (f) {
-            var r = new FileReader();
-            r.onload = function(e) { 
+        if (file && file.type.match('text/html.*')) {
+            var filereader = new FileReader();
+            filereader.onload = function(e) { 
                 var contents = e.target.result;
-                t.value = contents;
+                targetFile.value = contents;
             }
-                r.readAsText(f);
+                filereader.readAsText(file);
         } else { 
             alert("fichier non chargé");
         }
@@ -168,5 +194,15 @@ angular.module('emailingGeneratorApp')
                 var replaceNg = currentHtml.replace(/(&lt;ng-include src="\'views\/templates\/scripts\.html'"&gt\;&lt\;\/ng-include&gt\;)|(ng-model=".+")/g, "");
                 element.parent().parent().find('.base_code').append(replaceNg);       
             });
+       };
+   }])
+   .directive('changeCode', [function () {
+       return function (scope, element, attrs){
+            var targetZone = element.parent().parent().parent().parent().parent().siblings('.newsletter').find('#copy-zone');
+            element.click(function(){
+               //console.log(targetZone.attr('href')); 
+               console.log(targetZone.html()); 
+            });
+            
        };
    }]);

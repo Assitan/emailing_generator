@@ -9,8 +9,7 @@ angular
     'ui.router',
     'firebase',
     'xeditable',
-    'colorpicker.module',
-    'ngClipboard'
+    'colorpicker.module'
   ])
   .constant('FBURL', 'https://generator-newsletters.firebaseio.com')
   .config(function ($stateProvider, $urlRouterProvider,$locationProvider) {
