@@ -27,7 +27,9 @@ angular.module('emailingGeneratorApp')
         'LU-fr',
         'NL-nl',
         'UK-en'
-    ]; 
+    ];
+
+    $scope.btnCopy = false;
 
    //ANNÉE FOOTER
     $scope.year = new Date();
@@ -35,16 +37,16 @@ angular.module('emailingGeneratorApp')
     //GET FILE
     function readFile(evt) {
 
-    var f = evt.target.files[0]; 
-    var t = document.getElementById('targetFile');
+        var f = evt.target.files[0]; 
+        var t = document.getElementById('targetFile');
 
-    if (f) {
-        var r = new FileReader();
-        r.onload = function(e) { 
-            var contents = e.target.result;
-            t.value = contents;
-        }
-            r.readAsText(f);
+        if (f) {
+            var r = new FileReader();
+            r.onload = function(e) { 
+                var contents = e.target.result;
+                t.value = contents;
+            }
+                r.readAsText(f);
         } else { 
             alert("fichier non chargé");
         }
@@ -153,70 +155,18 @@ angular.module('emailingGeneratorApp')
         });
       };
     })
-   //get new code html of newsletter
+   //get new code html of newsletter from ui-view
    .directive('mdmRender', [function () {
     	return function (scope, element, attrs){
     		element.children().unwrap('<span class="ng-scope ng-binding"></span>');
     	};
     }])
-   .directive('mdmResult', [function () {        
-        return function (scope, element, attrs){
-            scope.getTextToCopy = function() {
-                return element.siblings('#render').children('span').html();
-            };
-            scope.infoCopy = function () {
-                element.after('<p class="copy-infos">copié</p>');
-                element.siblings('p').delay(400).fadeOut();
-            };     
-       };
-   }])
-   .directive('removeCode', [function () {
+   .directive('copyCode', [function () {
        return function (scope, element, attrs){            
             element.click(function(){
                 var currentHtml = element.parent().siblings('#render').children().html();
                 var replaceNg = currentHtml.replace(/(&lt;ng-include src="\'views\/templates\/scripts\.html'"&gt\;&lt\;\/ng-include&gt\;)|(ng-model=".+")/g, "");
-                element.parent().parent().find('.base_code').append(replaceNg);
-              
+                element.parent().parent().find('.base_code').append(replaceNg);       
             });
        };
-   }])
-   .directive('mdmDraggable', ['$document', function($document) {
-    return function (scope, element, attr) {
-      var startX = 0, startY = 0, x = 0, y = 0;
- 
-      element.on('mousedown', function(event) {
-        event.preventDefault();
-        element.css({        
-          'opacity': '.7',
-          'border': '2px dashed black',
-          'box-shadow':'0 0 5px #333',
-          'cursor':'move',
-          'z-index':100
-        });
-        startX = event.pageX - x;
-        startY = event.pageY - y;
-
-        $document.on('mousemove', mousemove);
-        $document.on('mouseup', mouseup);
-      });
- 
-      function mousemove(event) {
-        y = event.pageY - startY;
-        x = event.pageX - startX;
-        element.css({
-          top: y + 'px',
-          left:  x + 'px'
-        });
-      }
- 
-      function mouseup() {
-        element.css({
-          'opacity': 1,
-          'border': '4px solid rgba(247, 247, 247, 0.57)',
-          'box-shadow':'none'
-        });
-        $document.unbind('mousemove', mousemove);
-        $document.unbind('mouseup', mouseup);
-      }
-    };
-  }]);
+   }]);

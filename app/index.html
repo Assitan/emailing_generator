@@ -15,11 +15,11 @@
   </head>
   <body role="main" ng-app="emailingGeneratorApp" ng-controller="MainCtrl">
 
-    <ul class="nav nav-tabs">
-        <li mdm-addactiveclass><a ui-sref="main">Modifier</a></li>
-        <li mdm-addactiveclass><a ui-sref="getfile">Récupérer</a></li>
-        <li mdm-addactiveclass><a ui-sref="generate">Générer</a></li>
-    </ul>
+        <ul class="nav nav-tabs">
+        <!--<li mdm-addactiveclass><a hre="#">Modifier</a></li>-->        
+            <li mdm-addactiveclass><a ui-sref="getfile" ng-click="btnCopy = !btnCopy">Récupérer</a></li>
+            <li mdm-addactiveclass><a ui-sref="generate" ng-click="btnCopy = !btnCopy">Générer</a></li>
+        </ul>
     
        <nav id="menu" class="navbar col-sm-1">
         <ul id="menu_content" class="nav nav-pills nav-stacked">
@@ -63,8 +63,7 @@
     </div>
     
     <div id="settingsOutput">
-        <button type="button" class="btn btn-primary btn-xs" remove-code>enlever</button>
-        <button type="button" class="btn btn-primary btn-xs btn-copy" clip-copy="getTextToCopy()" clip-click="infoCopy()" mdm-result>copier</button>
+        <button type="button" class="btn btn-primary btn-xs" copy-code ng-show="btnCopy">copier dans l'onglet Générer</button>
     </div>
     
     <div id="settings" class="col-sm-2">
@@ -75,21 +74,21 @@
                     <li>
                         <button colorpicker colorpicker-fixed-position="true" ng-model="$parent.setColor.background.colour" type="button" class="btn_left btn btn-primary btn-xs">background</button> 
                         <div class="right_inputs">
-                            <input class="colorpicker_input" ng-model="$parent.setColor.background.colour" type="text">
+                            <input class="colorpicker_input" ng-model="$parent.setColor.background.colour" type="text" placeholder="#">
                             <button ng-model="$parent.setColor.background.colour" type="submit" class="btn btn-primary btn-xs ok_btn" ng-click="setGeneralColor()">OK</button> 
                         </div>
                     </li> 
                     <li>
                         <button colorpicker colorpicker-fixed-position="true" ng-model="$parent.setColor.text.colour" type="button" class="btn btn-primary btn-xs btn_left">texte header & footer</button> 
                         <div class="right_inputs">
-                            <input class="colorpicker_input" ng-model="$parent.setColor.text.colour" type="text">
+                            <input class="colorpicker_input" ng-model="$parent.setColor.text.colour" type="text" placeholder="#">
                             <button ng-model="$parent.setColor.text.colour" type="submit" class="btn btn-primary btn-xs ok_btn" ng-click="setGeneralColor()">OK</button> 
                         </div>
                     </li>  
                     <li>
                         <button colorpicker colorpicker-fixed-position="true" ng-model="$parent.setColor.border.colour" type="button" ng-click="setGeneralColor()" class="btn_left btn btn-primary btn-xs">bordure</button> 
                         <div class="right_inputs">
-                            <input class="colorpicker_input" ng-model="$parent.setColor.border.colour" type="text">
+                            <input class="colorpicker_input" ng-model="$parent.setColor.border.colour" type="text" placeholder="#">
                             <button ng-model="$parent.setColor.border.colour" type="submit" class="btn btn-primary btn-xs ok_btn" ng-click="setGeneralColor()">OK</button> 
                         </div>
                     </li>             
@@ -118,7 +117,7 @@
             <form class="form-horizontal" ng-submit="addOutput()" role="form" ng-controller="EmailingCtrl">
                 <div class="form-group">
                     <textarea id="" rows="10" class="form-control" ng-model="outputCode"></textarea>
-                    {{outputCode}}
+             
                 </div>
                 <button type="submit" class="btn btn-primary">Save changes</button>
             </form>

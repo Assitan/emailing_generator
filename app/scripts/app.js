@@ -17,18 +17,15 @@ angular
 
     $urlRouterProvider.otherwise('/');
 
-    $stateProvider.state('main', {
-        url: 'main',
-        templateUrl: 'index.html'
-    })
-    .state('getfile', {
-        url: 'getfilet',
-        templateUrl: 'views/getfile.html'
-    })
-    .state('generate', {
-        url: 'generate',
-        templateUrl: 'views/generate.html'
-    });
+    $stateProvider
+        .state('getfile', {
+            url: 'getfile',
+            templateUrl: 'views/getfile.html'
+        })
+        .state('generate', {
+            url: 'generate',
+            templateUrl: 'views/generate.html'
+        });
 
     var mainCountries = ['BE-fr','DE-de','ES-es','FR-fr','IT-it'],
         allCountries = ['AT-de','BE-fr','BE-nl','CH-de','CH-fr','CH-it','DE-de','ES-es','FR-fr','IT-it','LU-fr','NL-nl','UK-en'],
