@@ -15,22 +15,10 @@ angular
   .constant('FBURL', 'https://generator-newsletters.firebaseio.com')
   .config(function ($stateProvider, $urlRouterProvider,$locationProvider) {
 
-    $urlRouterProvider.otherwise('/');
-
-    $stateProvider
-        .state('getfile', {
-            url: 'getfile',
-            templateUrl: 'views/getfile.html'
-        })
-        .state('generate', {
-            url: 'generate',
-            templateUrl: 'views/generate.html'
-        });
-
     var mainCountries = ['BE-fr','DE-de','ES-es','FR-fr','IT-it'],
-        allCountries = ['AT-de','BE-fr','BE-nl','CH-de','CH-fr','CH-it','DE-de','ES-es','FR-fr','IT-it','LU-fr','NL-nl','UK-en'],
-        i = 0,
-        j = 0;
+    allCountries = ['AT-de','BE-fr','BE-nl','CH-de','CH-fr','CH-it','DE-de','ES-es','FR-fr','IT-it','LU-fr','NL-nl','UK-en'],
+    i = 0,
+    j = 0;
 
     for (var i = 0; i < mainCountries.length; i++) {
         state_kit(mainCountries[i]);
@@ -41,6 +29,26 @@ angular
         state_news(allCountries[j]);
         state_news700(allCountries[j]);
     };
+
+    $urlRouterProvider.otherwise('/');
+
+    $stateProvider
+        .state('getfile', {
+            url: 'getfile',
+            templateUrl: 'views/getfile.html'
+        })
+        .state('generate', {
+            url: 'generate',
+            templateUrl: 'views/generate.html'
+        })
+        .state('newsCP', {
+            url: 'generate',
+            templateUrl: 'views/templates/newsletters/news/news-FR-fr_CP.html'
+        })
+        .state('news700CP', {
+            url: 'generate',
+            templateUrl: 'views/templates/newsletters/news700/news-700-FR-fr_CP.html'
+        });
 
     function state_kit(country){
         $stateProvider.state('kit_' + country, {
@@ -71,8 +79,5 @@ angular
     };
 
     $locationProvider.html5Mode(true);
-  })
-    .config(['ngClipProvider', function(ngClipProvider) { 
-        ngClipProvider.setPath("bower_components/zeroclipboard/ZeroClipboard.swf");
-    }]);
+  });
 
