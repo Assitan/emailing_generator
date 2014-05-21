@@ -38,7 +38,7 @@ angular.module('emailingGeneratorApp')
     var f = evt.target.files[0]; 
     var t = document.getElementById('targetFile');
 
-    if (f && f.type.match('text/html.*')) {
+    if (f) {
         var r = new FileReader();
         r.onload = function(e) { 
             var contents = e.target.result;
@@ -174,10 +174,9 @@ angular.module('emailingGeneratorApp')
        return function (scope, element, attrs){            
             element.click(function(){
                 var currentHtml = element.parent().siblings('#render').children().html();
-                //var result = currentHtml.replace(/<ng-include src="\'views\/templates\/scripts\.html\'"><\/ng-include>/g, "");
-                var result = currentHtml.replace(/editable-text="edit\.strapline_./g, '');
-               
-                element.parent().parent().find('.base_code').append(result);
+                var replaceNg = currentHtml.replace(/(&lt;ng-include src="\'views\/templates\/scripts\.html'"&gt\;&lt\;\/ng-include&gt\;)|(ng-model=".+")/g, "");
+                element.parent().parent().find('.base_code').append(replaceNg);
+              
             });
        };
    }])
