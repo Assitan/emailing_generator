@@ -29,13 +29,9 @@ angular.module('emailingGeneratorApp')
         'UK-en'
     ];
 
-    $scope.btnCopy = false;
-
-    $scope.master = {};
-
-    $scope.update = function(file) {
-        $scope.master= angular.copy(file);
-    };
+    $scope.generate = function(){
+        $('#settingsOutput').fadeToggle();
+    }
 
     $scope.loadingCode = {
         pasted: false,
@@ -45,15 +41,12 @@ angular.module('emailingGeneratorApp')
       $scope.events = {
         onCopy: function(event) {
           $scope.loadingCode.copied = true;
-          //console.log(event);
         },
         onPaste: function(event) {
           $scope.loadingCode.pasted = true;
-          //console.log(event);
         },
         onCut: function(event) {
           $scope.loadingCode.cut = true;
-          //console.log(event);
         }
       };
 
@@ -196,13 +189,12 @@ angular.module('emailingGeneratorApp')
             });
        };
    }])
-   .directive('changeCode', [function () {
-       return function (scope, element, attrs){
-            var targetZone = element.parent().parent().parent().parent().parent().siblings('.newsletter').find('#copy-zone');
-            element.click(function(){
-               //console.log(targetZone.attr('href')); 
-               console.log(targetZone.html()); 
-            });
-            
-       };
-   }]);
+   // .directive('changeCode', [function () {
+   //     return function (scope, element, attrs){
+   //          var targetZone = element.parent().parent().parent().parent().parent().siblings('.newsletter').find('#copy-zone');
+   //          element.click(function(){
+   //             console.log(targetZone.html()); 
+   //          });     
+   //     };
+   // }])
+;

@@ -15,13 +15,13 @@
   </head>
   <body role="main" ng-app="emailingGeneratorApp" ng-controller="MainCtrl">
 
-        <ul class="nav nav-tabs">
-            <li mdm-addactiveclass><a href="/">Accueil</a></li>        
-            <li mdm-addactiveclass><a ui-sref="getfile" ng-click="btnCopy = !btnCopy">Récupérer</a></li>
-            <li mdm-addactiveclass><a ui-sref="generate" ng-click="btnCopy = !btnCopy">Générer</a></li>
-        </ul>
+    <ul class="nav nav-tabs">
+        <li mdm-addactiveclass><a href="/">Accueil</a></li>        
+        <li mdm-addactiveclass><a ui-sref="getfile">Récupérer</a></li>
+        <li mdm-addactiveclass><a ui-sref="generate" ng-click="generate()">Générer</a></li>
+    </ul>
     
-       <nav id="menu" class="navbar col-sm-1">
+    <nav id="menu" class="navbar col-sm-1">
         <ul id="menu_content" class="nav nav-pills nav-stacked">
             <li class="countries">
                 <a class="title" href="#">kit</a>
@@ -70,13 +70,13 @@
     </div>
     
     <div id="settingsOutput">
-        <button type="button" class="btn btn-primary btn-xs" copy-code ng-show="btnCopy">copier dans l'onglet Générer</button>
+        <button type="button" class="btn btn-primary btn-xs" copy-code>copier dans l'onglet Générer</button>
     </div>
     
     <div id="settings" class="col-sm-2">
         <ul id="menu_colorpick" class="nav">
             <li>
-                <h4 id="general_title">Général</h4>
+                <h4 id="general_title">Couleurs</h4>
                 <ul id="general_menu" class="nav">
                     <li>
                         <button colorpicker colorpicker-fixed-position="true" ng-model="$parent.setColor.background.colour" type="button" class="btn_left btn btn-primary btn-xs">background</button> 
@@ -102,7 +102,7 @@
                 </ul>
             </li>
 
-            <li>
+           <!--  <li>
                 <h4 id="sections_title">Sections</h4>
                 <ul class="nav">
                     <li><button id="btn-render" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#outputHtmail">
@@ -110,7 +110,7 @@
                 </button></li>
                     <li><button class="btn btn-primary btn-xs" change-code>modif</button></li>
                 </ul>
-            </li>
+            </li> -->
         </ul>
     </div>
 

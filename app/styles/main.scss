@@ -203,6 +203,7 @@ body {
 
 
 #settingsOutput{
+    display: none;
     clear: both;
     float: left;
 
@@ -231,10 +232,10 @@ body {
         margin: 10px 0 20px 0;
     }
 
-    #targetFile{
-        //background-color: #000;
-        height: 200px;
-    }
+    // #targetFile{
+    //     //background-color: #000;
+    //     height: 200px;
+    // }
 }
 
 /* 
