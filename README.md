@@ -1,8 +1,10 @@
 Générateur de newsletters
 ==================
 
-Pour voir le projet en dev, il faut avoir NodeJS installé sur son environnement. 
-Pour démarrer l'application, taper `grunt serve` dans la console.
+- Projet en développement: Il faut avoir NodeJS installé sur son environnement. 
+- Pour démarrer l'application, taper `grunt serve` dans la console.
+
+Projet en production: [https://generator-newsletters.firebaseapp.com/](https://generator-newsletters.firebaseapp.com/)
 
 
 ## Documentation
@@ -22,6 +24,3 @@ Dans `scripts/generator/emailing.json` on retrouve le fichier json initial de Fi
 Pour l'instant, pour récupérer le code de la bonne version du template, il faut recharger la page puis cliquer sur la version de son choix dans le menu (cela ne se fait pas automatiquement). 
 
 Par rapport aux routes, cliquer sur __Accueil__ puis recharger la page et enfin cliquer sur la version voulue (on peut vérifier que le bon code est chargé en regardant les `trackings` dans la zone de l'onglet __Générer__).
-
-
-
