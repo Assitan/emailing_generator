@@ -1,6 +1,6 @@
 Emailing generator changelog
 =============================
 
-Version 0.1.0 May 23, 2014
+Version 1.0.0 May 23, 2014
 ----------------------------
 Initial release.
