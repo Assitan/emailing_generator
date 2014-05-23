@@ -1,0 +1,167 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <title>Générateur de newsletters</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="bower_components/angular-bootstrap-colorpicker/css/colorpicker.css">
+    <link rel="stylesheet" href="bower_components/angular-xeditable/dist/css/xeditable.css">
+    <base href="/">
+  </head>
+  <body role="main" ng-app="emailingGeneratorApp" ng-controller="MainCtrl">
+
+    <ul class="nav nav-tabs">
+        <li mdm-addactiveclass><a href="/">Accueil</a></li>        
+        <li mdm-addactiveclass><a ui-sref="getfile">Récupérer</a></li>
+        <li mdm-addactiveclass><a ui-sref="generate" ng-click="generate()">Générer</a></li>
+    </ul>
+    
+    <nav id="menu" class="navbar col-sm-1">
+        <ul id="menu_content" class="nav nav-pills nav-stacked">
+            <li class="countries">
+                <a class="title" href="#">kit</a>
+                <ul class="nav nav-pills nav-stacked sub-menu">
+                    <li ng-repeat="kit in main_countries" mdm-addactiveclass>
+                        <a ui-sref="kit_{{kit}}">{{kit}}</a>
+                    </li>
+                </ul>           
+            </li>
+            <li class="countries">
+                <a class="title" href="#">kit700</a>
+                <ul class="nav nav-pills nav-stacked sub-menu">
+                    <li ng-repeat="kit700 in main_countries" mdm-addactiveclass>
+                        <a ui-sref="kit700_{{kit700}}">{{kit700}}</a>
+                    </li>
+                </ul>           
+            </li>
+            <li class="countries">
+                <a class="title" href="#">news</a>
+                <ul class="nav nav-pills nav-stacked sub-menu">
+                    <li ng-repeat="news in all_countries" mdm-addactiveclass>
+                        <a ui-sref="news_{{news}}">{{news}}</a>
+                    </li>
+                </ul>           
+            </li>
+            <li class="countries">
+                <a class="title" href="#">news700</a>
+                <ul class="nav nav-pills nav-stacked sub-menu">
+                    <li ng-repeat="news700 in all_countries" mdm-addactiveclass>
+                        <a ui-sref="news700_{{news700}}">{{news700}}</a>
+                    </li>
+                </ul>           
+            </li>
+            <li class="countries">
+                <a class="title" href="#">Clients Privilèges</a>
+                <ul class="nav nav-pills nav-stacked sub-menu">
+                    <li mdm-addactiveclass><a ui-sref="newsCP">600</a></li>
+                    <li mdm-addactiveclass><a ui-sref="news700CP">700</a></li>
+                </ul>           
+            </li>
+        </ul>     
+    </nav>
+
+    <div id="render" contenteditable>   
+        <textarea id="render_zone" class="container newsletter" ui-view ng-controller="EmailingCtrl" mdm-render></textarea>
+    </div>
+    
+    <div id="settingsOutput">
+        <button type="button" class="btn btn-primary btn-xs" copy-code>copier dans l'onglet Générer</button>
+    </div>
+    
+    <div id="settings" class="col-sm-2">
+        <ul id="menu_colorpick" class="nav">
+            <li>
+                <h4 id="general_title">Couleurs</h4>
+                <ul id="general_menu" class="nav">
+                    <li>
+                        <button colorpicker colorpicker-fixed-position="true" ng-model="$parent.setColor.background.colour" type="button" class="btn_left btn btn-primary btn-xs">background</button> 
+                        <div class="right_inputs">
+                            <input class="colorpicker_input" ng-model="$parent.setColor.background.colour" type="text" placeholder="#">
+                            <button ng-model="$parent.setColor.background.colour" type="submit" class="btn btn-primary btn-xs ok_btn" ng-click="setGeneralColor()">OK</button> 
+                        </div>
+                    </li> 
+                    <li>
+                        <button colorpicker colorpicker-fixed-position="true" ng-model="$parent.setColor.text.colour" type="button" class="btn btn-primary btn-xs btn_left">texte header & footer</button> 
+                        <div class="right_inputs">
+                            <input class="colorpicker_input" ng-model="$parent.setColor.text.colour" type="text" placeholder="#">
+                            <button ng-model="$parent.setColor.text.colour" type="submit" class="btn btn-primary btn-xs ok_btn" ng-click="setGeneralColor()">OK</button> 
+                        </div>
+                    </li>  
+                    <li>
+                        <button colorpicker colorpicker-fixed-position="true" ng-model="$parent.setColor.border.colour" type="button" ng-click="setGeneralColor()" class="btn_left btn btn-primary btn-xs">bordure</button> 
+                        <div class="right_inputs">
+                            <input class="colorpicker_input" ng-model="$parent.setColor.border.colour" type="text" placeholder="#">
+                            <button ng-model="$parent.setColor.border.colour" type="submit" class="btn btn-primary btn-xs ok_btn" ng-click="setGeneralColor()">OK</button> 
+                        </div>
+                    </li>             
+                </ul>
+            </li>
+
+           <!--  <li>
+                <h4 id="sections_title">Sections</h4>
+                <ul class="nav">
+                    <li><button id="btn-render" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#outputHtmail">
+                    Coller le rendu
+                </button></li>
+                    <li><button class="btn btn-primary btn-xs" change-code>modif</button></li>
+                </ul>
+            </li> -->
+        </ul>
+    </div>
+
+    <div class="modal fade" id="outputHtmail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Output</h4>
+          </div>
+          <div class="modal-body">
+            <form class="form-horizontal" ng-submit="addOutput()" role="form" ng-controller="EmailingCtrl">
+                <div class="form-group">
+                    <textarea id="" rows="10" class="form-control" ng-model="outputCode"></textarea>
+             
+                </div>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>        
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="container newsletter" ui-view ng-controller="EmailingCtrl"></div>
+
+     <!--<footer class="footer">
+      <p><span class="glyphicon glyphicon-heart"></span> from the frond-end dev team</p>
+    </footer> -->
+
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap.js"></script>
+    <script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/modal.js"></script>
+    <script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/transition.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="bower_components/angular-xeditable/dist/js/xeditable.min.js"></script>
+    <script src="bower_components/firebase/firebase.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/angularFire/0.5.0/angularfire.min.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="bower_components/angular-bootstrap-colorpicker/js/bootstrap-colorpicker-module.js"></script>  
+
+    <script src="scripts/app.js"></script>
+    <script src="scripts/generator/generator.js"></script>
+    <script src="scripts/generator/emailing.js"></script>
+   
+</body>
+</html>
