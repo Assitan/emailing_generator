@@ -1,9 +1,9 @@
 Générateur de newsletters
 ==================
 
-- Projet en développement: Il faut avoir NodeJS installé sur son environnement. Pour démarrer l'application, taper `grunt serve` dans la console.
+__Projet en développement__: Il faut avoir NodeJS installé sur son environnement. Pour démarrer l'application, taper `grunt serve` dans la console.
 
-- Projet en production: [https://generator-newsletters.firebaseapp.com/](https://generator-newsletters.firebaseapp.com/)
+__Projet en production__: [https://generator-newsletters.firebaseapp.com/](https://generator-newsletters.firebaseapp.com/)
 
 
 ## Documentation
