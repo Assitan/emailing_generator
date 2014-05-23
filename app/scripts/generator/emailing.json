@@ -11,12 +11,12 @@
     }
   },
   "texts" : {
-    "strapline_nl" : "strapline",
-    "strapline_it" : "strapline",
-    "strapline_en" : "strapline",
-    "strapline_fr" : "strapline",
-    "strapline_es" : "strapline",
-    "strapline_de" : "strapline"
+    "strapline_nl" : "surtitre",
+    "strapline_it" : "surtitre",
+    "strapline_en" : "surtitre",
+    "strapline_fr" : "surtitre",
+    "strapline_es" : "surtitre",
+    "strapline_de" : "surtitre"
   },
   "trackings" : {
     "LU_fr" : {

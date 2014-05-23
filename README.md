@@ -17,5 +17,11 @@ Ne pas oublier de changer le `[TITLE]` dans la zone.
 
 On peut récupérer le code généré par l'application __Mailrox__ dans l'onglet __Récupérer__ en chargeant le ficher `index.html`.
 
-Pour l'instant, pour récupérer le code de la bonne version du template, il faut recharger la page puis cliquer sur la version de son choix dans le menu (cela ne se fait pas automatiquement :()). Par rapport aux routes, cliquer sur __Accueil__ puis recharger la page et enfin cliquer sur la version voulue (on peut vérifier que le bon code est chargé en regardant les trackings dans la petite zone à gauche).
+Dans `scripts/generator/emailing.json` on retrouve le fichier json initial de Firebase.
+
+Pour l'instant, pour récupérer le code de la bonne version du template, il faut recharger la page puis cliquer sur la version de son choix dans le menu (cela ne se fait pas automatiquement). 
+
+Par rapport aux routes, cliquer sur __Accueil__ puis recharger la page et enfin cliquer sur la version voulue (on peut vérifier que le bon code est chargé en regardant les trackings dans la petite zone à gauche).
+
+
 
