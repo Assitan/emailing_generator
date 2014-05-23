@@ -19,12 +19,12 @@ angular
     i = 0,
     j = 0;
 
-    for (var i = 0; i < mainCountries.length; i++) {
+    for (; i < mainCountries.length; i++) {
         state_kit(mainCountries[i]);
         state_kit700(mainCountries[i]);
     };
 
-    for (var j = 0; j < allCountries.length; j++) {
+    for (; j < allCountries.length; j++) {
         state_news(allCountries[j]);
         state_news700(allCountries[j]);
     };
