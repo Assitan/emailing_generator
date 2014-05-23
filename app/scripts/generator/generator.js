@@ -6,32 +6,22 @@ angular.module('emailingGeneratorApp')
 
      // NAVIGATION
     $scope.main_countries = [
-        'FR-fr',
-        'BE-fr',
-        'DE-de',
-        'ES-es',
-        'IT-it'
+        'FR-fr','BE-fr','DE-de','ES-es','IT-it'
     ];
 
     $scope.all_countries = [
-        'AT-de',
-        'BE-fr',
-        'BE-nl',
-        'CH-de',
-        'CH-fr',
-        'CH-it',
-        'DE-de',
-        'ES-es',
-        'FR-fr',
-        'IT-it',
-        'LU-fr',
-        'NL-nl',
+        'AT-de','BE-fr',
+        'BE-nl','CH-de',
+        'CH-fr','CH-it',
+        'DE-de','ES-es',
+        'FR-fr','IT-it',
+        'LU-fr','NL-nl',
         'UK-en'
     ];
 
     $scope.generate = function(){
         $('#settingsOutput').fadeToggle();
-    }
+    };
 
     $scope.loadingCode = {
         pasted: false,

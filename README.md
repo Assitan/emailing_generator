@@ -21,7 +21,7 @@ Dans `scripts/generator/emailing.json` on retrouve le fichier json initial de Fi
 
 Pour l'instant, pour récupérer le code de la bonne version du template, il faut recharger la page puis cliquer sur la version de son choix dans le menu (cela ne se fait pas automatiquement). 
 
-Par rapport aux routes, cliquer sur __Accueil__ puis recharger la page et enfin cliquer sur la version voulue (on peut vérifier que le bon code est chargé en regardant les trackings dans la petite zone à gauche).
+Par rapport aux routes, cliquer sur __Accueil__ puis recharger la page et enfin cliquer sur la version voulue (on peut vérifier que le bon code est chargé en regardant les `trackings` dans la zone de l'onglet __Générer__).
 
 
 
