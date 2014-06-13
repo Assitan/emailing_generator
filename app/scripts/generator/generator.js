@@ -172,7 +172,7 @@ angular.module('emailingGeneratorApp')
     }])
    .directive('copyCode', [function () {
        return function (scope, element, attrs){            
-            element.click(function(){
+            element.one('click',function(){
                 var currentHtml = element.parent().siblings('#render').children().html();
                 var replaceNg = currentHtml.replace(/(&lt;ng-include src="\'views\/templates\/scripts\.html'"&gt\;&lt\;\/ng-include&gt\;)|(ng-model=".+")/g, "");
                 element.parent().parent().find('.base_code').append(replaceNg);       
