@@ -9,8 +9,6 @@ app
         i = 0,
         j = 0;
 
-        //console.log(MainCountriesFactory);
-
     for (; i < mainCountries.length; i++) {
         state_kit(mainCountries[i]);
         state_kit700(mainCountries[i]);
@@ -20,8 +18,6 @@ app
         state_news(allCountries[j]);
         state_news700(allCountries[j]);
     }
-
-
 
     $urlRouterProvider.otherwise('/');
 

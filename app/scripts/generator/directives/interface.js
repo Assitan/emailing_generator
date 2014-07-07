@@ -18,13 +18,11 @@ app.directive('mdmAddactiveclass', function() {
 
         var generate = angular.element('.generate_zone_container');
         var newsletter =  angular.element('.newsletter').html();
-        var replaced_newsletter  = newsletter.replace(/(class="ng-scope ng-binding")|(ng-binding)|(ng-model=".+")/g, "");
+        var replaced_newsletter  = newsletter.replace(/(class="ng-scope ng-binding")|(class="ng-scope")|(class="ng-binding")|(ng-model=".+")/g, "");
 
         generate
           .children()
-          .remove()//Annule l'opération 'desctructrice' la plus récente, en modifiant la liste des élements qui redevient celle de l'état précédent. 
-          //Si aucune opération destructive n'a été appelée avant, un conteneur vide est renvoyé. Une opération destructive est une opération 
-          //qui modifie le contenu du conteneur des élements jQuery recherchés. Elles sont: add,children,clone,filter,find,not,nexr,parent,parents,prev and siblings.
+          .remove()
           .end()
           .append('<textarea class="generate_zone">'+
           '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">'+

@@ -15,26 +15,18 @@ Lorsque l'on clique sur `copier dans le code HTML`, le code est ajouté à la zo
 
 Ne pas oublier de changer le `[TITLE]` dans la zone. Il faudra re-cliquer sur le bouton pour charger les  modifications.
 
- ~~On peut récupérer le code généré par l'application __Mailrox__ dans l'onglet __Récupérer__ en chargeant le ficher `index.html`. ~~
-
- ~~Dans `scripts/generator/emailing.json` on retrouve le fichier json initial de Firebase. ~~
-
- ~~Pour l'instant, pour récupérer le code de la bonne version du template, il faut recharger la page puis cliquer sur la version de son choix dans le menu (cela ne se fait pas automatiquement). ~~ 
-
- ~~Par rapport aux routes, cliquer sur __Accueil__ puis recharger la page et enfin cliquer sur la version voulue (on peut vérifier que le bon code est chargé en regardant les `trackings` dans la zone de l'onglet __Générer__). ~~
-
 
 ###Todo:
 
-Enlever la référence au background dans la balise style car la conversion ne se fait pas.
+- Enlever la référence au background dans la balise style car la conversion ne se fait pas.
 
-Enregistrer sur son ordinateur le template modifié en cliquant sur le bouton `Générer`.
+- Enregistrer sur son ordinateur le template modifié en cliquant sur le bouton `Générer`.
 
-Améliorer la navigation du choix des templates
+- Améliorer la navigation du choix des templates
 
-Permettre la possibilité de charger des images et de leur attribuer un nom et un lien.
+- Permettre de charger des images et de leur attribuer un nom et un lien.
 
-Refacto.
+- Refactoring.
 
 
 
