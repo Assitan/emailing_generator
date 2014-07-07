@@ -44,7 +44,7 @@ app.controller('GeneratorCtrl', ['$scope','$localStorage', 'storageFactory',
     $scope.title = storageFactory.templateTitle();
 
     $scope.reset = function(){
-        $localStorage.$reset();
+        storageFactory.resetStorage();
     };
 
     $scope.year = new Date();

@@ -17,6 +17,9 @@ app
         },
         templateTitle: function(){
           return title;
+        },
+        resetStorage: function(){
+          $localStorage.$reset();
         }
       };
     }]);
