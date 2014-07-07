@@ -18,8 +18,6 @@ Ne pas oublier de changer le `[TITLE]` dans la zone. Il faudra re-cliquer sur le
 
 ###Todo:
 
-- Enlever la référence au background dans la balise style car la conversion ne se fait pas.
-
 - Enregistrer sur son ordinateur le template modifié en cliquant sur le bouton `Générer`.
 
 - Améliorer la navigation du choix des templates
