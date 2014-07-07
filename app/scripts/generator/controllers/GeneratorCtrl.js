@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('GeneratorCtrl', ['$scope','$localStorage', 'TrackingsBeginFactory', 'TrackingsEndFactory', 'ColorFactory', 'TitleFactory', 
-                        function ($scope, $localStorage, TrackingsBeginFactory, TrackingsEndFactory, ColorFactory, TitleFactory) {
+app.controller('GeneratorCtrl', ['$scope','$localStorage', 'storageFactory', 
+                        function ($scope, $localStorage, storageFactory) {
 
     // NAVIGATION
     $scope.main_countries = ['FR_fr','DE_de','ES_es','IT_it','UK_en'];//TODO: Check kits for BE_fr
@@ -38,14 +38,14 @@ app.controller('GeneratorCtrl', ['$scope','$localStorage', 'TrackingsBeginFactor
         };
     }
 
-    $scope.track_begin = TrackingsBeginFactory;
-    $scope.track_end = TrackingsEndFactory;
-    $scope.setColor = ColorFactory;
-    $scope.title = TitleFactory;
+    $scope.track_begin = storageFactory.trackBegin();
+    $scope.track_end = storageFactory.trackEnd();
+    $scope.setColor = storageFactory.generalColor();
+    $scope.title = storageFactory.templateTitle();
 
     $scope.reset = function(){
         $localStorage.$reset();
-    }
+    };
 
     $scope.year = new Date();
 
