@@ -1,6 +1,16 @@
 Emailing generator changelog
 =============================
 
+Version 1.1.0 Juil 07, 2014
+----------------------------
+Réorganisation des fichiers
+Refactoring du code
+Amélioration de l'ergonomie
+Création de services
+Mise à jour des templates
+Enregistrement des données en localStorage et session Storage
+Les trackings peuvent être ajoutés directement
+
 Version 1.0.0 May 23, 2014
 ----------------------------
 Initial release.
