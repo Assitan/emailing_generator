@@ -1,0 +1,9 @@
+{
+  "firebase": "generator-newsletters",
+  "public": ".",
+  "ignore": [
+    "firebase.json",
+    ".*",
+    "**/node_modules/**"
+  ]
+}
