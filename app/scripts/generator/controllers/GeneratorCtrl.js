@@ -4,8 +4,8 @@ app.controller('GeneratorCtrl', ['$scope','$localStorage', 'storageFactory',
                         function ($scope, $localStorage, storageFactory) {
 
     // NAVIGATION
-    $scope.main_countries = ['FR_fr','DE_de','ES_es','IT_it','UK_en'];//TODO: Check kits for BE_fr
-    $scope.all_countries = ['AT_de','CH_de','BE_fr','CH_fr','LU_fr','NL_nl','BE_nl','CH_it'];
+    $scope.main_countries = ['FR_fr','DE_de','ES_es','IT_it','BE_fr'];
+    $scope.all_countries = ['AT_de','CH_de','UK_en','CH_fr','LU_fr','NL_nl','BE_nl','CH_it'];
 
     for (var i = 0; i < $scope.main_countries.length; i++) {
         for (var j = 0; j < $scope.all_countries.length; j++) {
@@ -14,14 +14,23 @@ app.controller('GeneratorCtrl', ['$scope','$localStorage', 'storageFactory',
         }
     }
 
-    $scope.simpleCountries = {};
-    for (var i = 0; i < $scope.main_countries.length; i++) {
-        key = $scope.main_countries[i];
-        $scope.simpleCountries[key] = {
-            big:$scope.main_countries[i].split('_').splice(0,1),
-            small:'template_' + $scope.main_countries[i].split('_').splice(1,2)
-        }
-    }
+    // $scope.simpleCountries = {};
+    // for (var i = 0; i < $scope.main_countries.length; i++) {
+    //     key = $scope.main_countries[i];
+    //     $scope.simpleCountries[key] = {
+    //         big:$scope.main_countries[i].split('_').splice(0,1),
+    //         small:'template_' + $scope.main_countries[i].split('_').splice(1,2)
+    //     };
+    // }
+
+    $scope.simpleCountries = [
+        {big:'FR', small:'fr'},
+        {big:'DE', small:'de'},
+        {big:'ES', small:'es'},
+        {big:'IT', small:'it'},
+        {big:'UK', small:'en'},
+        {big:'NL', small:'nl'},
+    ];
 
    /* $scope.isActive = function(route) {
         return route === $location.path();
