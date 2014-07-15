@@ -256,6 +256,10 @@ tabgroup{
     z-index: 200;
 }
 
+.editable-empty:before{
+    content: "surtitre";
+}
+
 #getFile{
     margin-top: 10px;
 
