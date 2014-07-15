@@ -24,11 +24,14 @@ app.directive('mdmAddactiveclass', function() {
           .children()
           .remove()
           .end()
-          .append('<textarea class="generate_zone">'+
-          '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">'+
-            replaced_newsletter + '</textarea>');
+          .append('<textarea class="generate_zone">\
+          <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">\
+          <html>\
+  <head>\
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">'+
+            replaced_newsletter + '</body></html></textarea>');
       });
-    }
+    };
 
     return {
       restrict: 'E',
